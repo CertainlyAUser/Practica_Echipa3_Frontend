@@ -4,7 +4,7 @@
 
 1. Clone Repo
 
-2. Pull Frontend branch 
+2. Pull dev branch 
 
 3. Open a CMD into the project's folder (...\Practica_Echipa3\Frontend)
 
