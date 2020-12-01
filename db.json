@@ -1,9 +1,67 @@
-{
-  "posts": [
-    { "id": 1, "title": "json-server", "author": "typicode" }
-  ],
-  "comments": [
-    { "id": 1, "body": "some comment", "postId": 1 }
-  ],
-  "profile": { "name": "typicode" }
-}
+[
+  {
+    "id": 54,
+    "title": "Zync Software Internship 2020",
+    "type": "Internship",
+    "description": "Share your passion! Whether you are a software developer, an usability expert or a graphic designer, Zynk has a lot to offer to you. Working at Zynk is a fun and rewarding experience. Our commitment is to promote a culture based on innovation, creativity and collaboration.",
+    "applicationDate": "18 Martie 2020",
+    "beginDate": "30 Iulie 2020",
+    "duration": "3 luni",
+    "link": "http://www.zynksoftware.com/",
+    "requirements": "Passionate. Good understanding of OOP principles. Strong interpersonal, communication and willing to learn. Fundamentals in data structures, algorithm design.",
+    "vacantPositions": "4",
+    "tags": ""
+  },
+  {
+    "id": 66,
+    "title": "IT-Labs Internship Opportunity",
+    "type": "Internship",
+    "description": "Cu pandemie sau fără, viața merge înainte! Înscrie-te la un internship care-ți va netezi drumul în carieră în cadrul organizației-mamă sau în compania în care dorești! Optează pentru internshipul care ți se potrivește în funcție de specializarea, dar și de interesele tale! Ai de ales între: C/C++.",
+    "applicationDate": "16 Iunie 2021",
+    "beginDate": "22 August 2021",
+    "duration": "2 luni",
+    "link": "https://internship.it-labs.ro",
+    "requirements": "",
+    "vacantPositions": "6",
+    "tags": ""
+  },
+  {
+    "id": 524,
+    "title": "Midsummer Ruby on Rails internship at Wolfpack Digital",
+    "type": "Contest",
+    "description": "Wolfpack Digital is a leading web and mobile app development company from Cluj-Napoca that works with global brands on some exciting tech projects. Join our internship program for the summer (and beyond) and start your IT career by discovering the proven app development processes and techniques and learn the Ruby on Rails framework from the best.",
+    "applicationDate": "25 Mai 2020",
+    "beginDate": "13 Iulie 2020",
+    "duration": "6 saptamani",
+    "link": "https://www.wolfpack-digital.com/jobs/ruby-on-rails-internship",
+    "requirements": "Technical student. Fun & Curious. Passionate about building a career in coding.",
+    "vacantPositions": "5",
+    "tags": ""
+  },
+  {
+    "id": 23,
+    "title": "Linnify Summer Internship 2020",
+    "type": "Internship",
+    "description": "This summer, Linnify is looking for brave new recruits that are ready to dive into a digital world. Exciting challenges await along with dedicated mentors that will help you prepare for your digital journey. Are you ready to transcend into the digital world? ",
+    "applicationDate": "28 Martie 2020",
+    "beginDate": "2 Iulie 2020",
+    "duration": "6 saptamani",
+    "link": "https://recruitment.linnify.com/",
+    "requirements": "",
+    "vacantPositions": "7",
+    "tags": ""
+  },
+  {
+    "id": 98,
+    "title": "Tapptitude Summer Internship 2020",
+    "type": "Internship",
+    "description": "We are Tapptitude – a Product Studio that partners with funded startups and established brands to build interactive, mobile-first products that people love to use. We are a team of over 60 product experts who work with our clients as Product Partners, supporting them proactively throughout the journey from idea to launching a product and scaling it up.",
+    "applicationDate": "18 Martie 2020",
+    "beginDate": "13 Iulie 2020",
+    "duration": "2 luni",
+    "link": "https://tapptitude.com",
+    "requirements": "Curious, motivated, eager to learn. Good English communication skills. Able to work alone, as well as in a group.",
+    "vacantPositions": "4",
+    "tags": ""
+  }
+]
