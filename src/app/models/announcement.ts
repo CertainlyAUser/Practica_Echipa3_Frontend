@@ -1,4 +1,5 @@
 export class Announcement {
+    public id: number;
     public title: string;
     public type: string;
     public description: string;

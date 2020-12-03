@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { AnnouncementListComponent } from '../announcement-list/announcement-list.component';
 import { Announcement } from '../../models/announcement';
+import { AnnouncementService } from '../../services/announcement.service';
 
 @Component({
   selector: 'app-announcement',
@@ -16,4 +16,9 @@ export class AnnouncementComponent implements OnInit {
   ngOnInit() {
   }
 
+  public apply() {}
+
+  public seeDetails() {}
+
+  public modify() {}
 }
