@@ -1,0 +1,17 @@
+form {
+    display: flex;
+    flex-direction: column;
+}
+.formCard{
+    width: 50vw;
+    min-height: 50vh;
+    margin-left: auto;
+    margin-right: auto;
+} 
+.radioButtons{
+    display: flex;
+    flex-direction: column;
+}
+.radioButton{
+    margin-top: 15px;
+}

@@ -1,0 +1,59 @@
+<mat-card class="formCard"> 
+<mat-horizontal-stepper linear>
+    <mat-step [stepControl]="generalInfo">
+        <ng-template matStepLabel>General information</ng-template>
+        <form [formGroup]="generalInfo">
+            <mat-form-field>
+                <label>Title:</label>
+                <input matInput type="text" formControlName="title">
+            </mat-form-field>
+            <label>Type:</label>
+            <mat-radio-group class="radioButtons" formControlName="type">
+                <mat-radio-button class="radioButton" type="radio" name="type" value="Internship">Internship</mat-radio-button>
+                <mat-radio-button class="radioButton" type="radio" name="type" value="Course">Course</mat-radio-button>
+                <mat-radio-button class="radioButton" type="radio" name="type" value="Ad">Ad</mat-radio-button>
+                <mat-radio-button class="radioButton" type="radio" name="type" value="Other">Other</mat-radio-button>
+            </mat-radio-group>
+            <mat-form-field>
+                <label>Vacant Positions:</label>
+                <input matInput type="text" formControlName="vacantPositions">
+            </mat-form-field>
+        </form>
+    </mat-step>
+    <mat-step [stepControl]="descripInfo">
+        <ng-template matStepLabel>Description</ng-template>
+        <form [formGroup]="descripInfo">
+            <mat-form-field>
+                <label>Description:</label>
+                <textarea matInput type="text" formControlName="description"></textarea>
+            </mat-form-field>
+        </form>
+    </mat-step>
+    <mat-step [stepControl]="timeInfo">
+        <ng-template matStepLabel>Time and Space</ng-template>
+        <form [formGroup]="timeInfo">
+            <mat-form-field>
+                <label>Application Date:</label>
+                <input matInput type="text" formControlName="applicationDate">
+            </mat-form-field>
+            <mat-form-field>
+                <label>Begin Date:</label>
+                <input matInput type="text" formControlName="beginDate">
+            </mat-form-field>
+        </form>
+    </mat-step>
+    <mat-step [stepControl]="miscInfo">
+        <ng-template matStepLabel>Other</ng-template>
+        <form [formGroup]="miscInfo">
+            <mat-form-field>
+                <label>Requirements:</label>
+                <input matInput type="text" formControlName="requirements">
+            </mat-form-field>
+            <mat-form-field>
+                <label>Tags:</label>
+                <input matInput type="text" formControlName="tags">
+            </mat-form-field>
+        </form>
+    </mat-step>
+</mat-horizontal-stepper>
+</mat-card>

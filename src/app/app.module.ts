@@ -4,15 +4,25 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AnnouncementFormComponent } from './addannouncement/announcement-form/announcement-form.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatCardModule, MatFormFieldModule, MatInputModule, MatRadioModule, MatStepperModule } from '@angular/material';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    AnnouncementFormComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    ReactiveFormsModule,
+    MatStepperModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatCardModule,
+    MatRadioModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
