@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AnnouncementFormComponent } from './addannouncement/announcement-form/announcement-form.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MatCardModule, MatFormFieldModule, MatInputModule, MatRadioModule, MatStepperModule } from '@angular/material';
+import { MatCardModule, MatDatepickerModule, MatFormFieldModule, MatInputModule, MatNativeDateModule, MatRadioModule, MatStepperModule } from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -23,6 +23,8 @@ import { MatCardModule, MatFormFieldModule, MatInputModule, MatRadioModule, MatS
     MatInputModule,
     MatCardModule,
     MatRadioModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
   providers: [],
   bootstrap: [AppComponent]

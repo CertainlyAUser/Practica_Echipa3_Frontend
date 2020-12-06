@@ -4,10 +4,10 @@
         <ng-template matStepLabel>General information</ng-template>
         <form [formGroup]="generalInfo">
             <mat-form-field>
-                <label>Title:</label>
+                <mat-label>Title:</mat-label>
                 <input matInput type="text" formControlName="title">
             </mat-form-field>
-            <label>Type:</label>
+            <mat-label>Type:</mat-label>
             <mat-radio-group class="radioButtons" formControlName="type">
                 <mat-radio-button class="radioButton" type="radio" name="type" value="Internship">Internship</mat-radio-button>
                 <mat-radio-button class="radioButton" type="radio" name="type" value="Course">Course</mat-radio-button>
@@ -15,7 +15,7 @@
                 <mat-radio-button class="radioButton" type="radio" name="type" value="Other">Other</mat-radio-button>
             </mat-radio-group>
             <mat-form-field>
-                <label>Vacant Positions:</label>
+                <mat-label>Vacant Positions:</mat-label>
                 <input matInput type="text" formControlName="vacantPositions">
             </mat-form-field>
         </form>
@@ -24,7 +24,7 @@
         <ng-template matStepLabel>Description</ng-template>
         <form [formGroup]="descripInfo">
             <mat-form-field>
-                <label>Description:</label>
+                <mat-label>Description:</mat-label>
                 <textarea matInput type="text" formControlName="description"></textarea>
             </mat-form-field>
         </form>
@@ -33,12 +33,16 @@
         <ng-template matStepLabel>Time and Space</ng-template>
         <form [formGroup]="timeInfo">
             <mat-form-field>
-                <label>Application Date:</label>
-                <input matInput type="text" formControlName="applicationDate">
+                <mat-label>Application Date:</mat-label>
+                <input matInput formControlName="applicationDate" [matDatepicker]="picker">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
             </mat-form-field>
             <mat-form-field>
-                <label>Begin Date:</label>
-                <input matInput type="text" formControlName="beginDate">
+                <mat-label>Begin Date:</mat-label>
+                <input matInput formControlName="beginDate" [matDatepicker]="picker2">
+                <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                <mat-datepicker #picker2></mat-datepicker>
             </mat-form-field>
         </form>
     </mat-step>
@@ -46,8 +50,8 @@
         <ng-template matStepLabel>Other</ng-template>
         <form [formGroup]="miscInfo">
             <mat-form-field>
-                <label>Requirements:</label>
-                <input matInput type="text" formControlName="requirements">
+                <mat-label>Requirements:</mat-label>
+                <textarea matInput type="text" formControlName="requirements"></textarea>
             </mat-form-field>
             <mat-form-field>
                 <label>Tags:</label>
