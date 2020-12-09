@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl} from '@angular/forms'
+import { TagService } from 'src/app/service/tag.service';
+import { TagListComponent } from '../tag-list/tag-list.component';
+import { TagComponent } from '../tag/tag.component';
 
 @Component({
   selector: 'app-announcement-form',
@@ -9,12 +12,14 @@ import { FormBuilder, FormGroup, Validators, FormControl} from '@angular/forms'
 export class AnnouncementFormComponent implements OnInit {
 
   //public announcForm : FormGroup;
+  private showModal : boolean;
   public generalInfo : FormGroup;
   public descripInfo : FormGroup;
   public timeInfo : FormGroup;
   public miscInfo : FormGroup;
+  public tagInfo : FormGroup;
 
-  constructor(private fb : FormBuilder) { }
+  constructor(private fb : FormBuilder, private ts : TagService) { }
 
   ngOnInit() {
     /*this.announcForm = this.fb.group({
@@ -28,23 +33,41 @@ export class AnnouncementFormComponent implements OnInit {
       'vacantPositions':[''],
       'tags':[''],
     });*/
+    this.showModal = false;
     this.generalInfo = this.fb.group({
+      //title:[null, Validators.required],
+      //type:[null, Validators.required],
+      //vacantPositions:[null, Validators.required],
       title:[null, Validators.required],
-      type:[null, Validators.required],
-      vacantPositions:[null, Validators.required]
+      link:[''],
+      type:[''],
+      vacantPositions:[''],
+      price:['']
     });
     this.descripInfo = this.fb.group({
-      description:[''],
+      shortDesc:[''],
+      description:['']
     });
     this.timeInfo = this.fb.group({
       applicationDate:[''],
-      beginDate:[''],
+      beginDate:['']
     });
     this.miscInfo = this.fb.group({
       link:[''],
       requirements:[''],
-      tags:[''],
+      tags:['']
+    });
+    this.tagInfo = this.fb.group({
+      tags:['']
     });
   }
 
+  toggleShow(){
+    this.showModal = !this.showModal;  
+  }
+
+  onSubmit(){
+    this.ts.addTag(this.tagInfo.controls.tags.value);
+    this.tagInfo.reset();
+  }
 }

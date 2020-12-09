@@ -7,22 +7,36 @@
                 <mat-label>Title:</mat-label>
                 <input matInput type="text" formControlName="title">
             </mat-form-field>
+            <mat-form-field>
+                <mat-label>Link:</mat-label>
+                <input matInput type="text" formControlName="link">
+            </mat-form-field>
             <mat-label>Type:</mat-label>
             <mat-radio-group class="radioButtons" formControlName="type">
                 <mat-radio-button class="radioButton" type="radio" name="type" value="Internship">Internship</mat-radio-button>
+                <mat-radio-button class="radioButton" type="radio" name="type" value="Job">Job</mat-radio-button>
                 <mat-radio-button class="radioButton" type="radio" name="type" value="Course">Course</mat-radio-button>
-                <mat-radio-button class="radioButton" type="radio" name="type" value="Ad">Ad</mat-radio-button>
-                <mat-radio-button class="radioButton" type="radio" name="type" value="Other">Other</mat-radio-button>
+                <mat-radio-button class="radioButton" type="radio" name="type" value="Contest">Contest</mat-radio-button>
+                <mat-radio-button class="radioButton" type="radio" name="type" value="ScholarShip">Scholarship</mat-radio-button>
+                <div *ngIf="generalInfo.controls.type.value == 'Ad'">Content to render when condition is true.</div>
             </mat-radio-group>
-            <mat-form-field>
+            <mat-form-field *ngIf="generalInfo.controls.type.value == 'ScholarShip' || generalInfo.controls.type.value == 'Internship'">
                 <mat-label>Vacant Positions:</mat-label>
                 <input matInput type="text" formControlName="vacantPositions">
+            </mat-form-field>
+            <mat-form-field *ngIf="generalInfo.controls.type.value == 'Contest'">
+                <mat-label>Price:</mat-label>
+                <input matInput type="text" formControlName="price">
             </mat-form-field>
         </form>
     </mat-step>
     <mat-step [stepControl]="descripInfo">
         <ng-template matStepLabel>Description</ng-template>
         <form [formGroup]="descripInfo">
+            <mat-form-field>
+                <mat-label>Short description:</mat-label>
+                <textarea matInput type="text" formControlName="shortDesc"></textarea>
+            </mat-form-field>
             <mat-form-field>
                 <mat-label>Description:</mat-label>
                 <textarea matInput type="text" formControlName="description"></textarea>
@@ -53,11 +67,26 @@
                 <mat-label>Requirements:</mat-label>
                 <textarea matInput type="text" formControlName="requirements"></textarea>
             </mat-form-field>
-            <mat-form-field>
-                <label>Tags:</label>
-                <input matInput type="text" formControlName="tags">
-            </mat-form-field>
+            <!-- <mat-form-field> -->
+                <mat-label>Tags:</mat-label>
+                <!-- <input matInput type="text" formControlName="tags"> -->
+                <button mat-button (click)="toggleShow()">Add Tags</button>
+            <!-- </mat-form-field> -->
         </form>
     </mat-step>
 </mat-horizontal-stepper>
 </mat-card>
+<div class="modalDiv" *ngIf="showModal">
+    <mat-card class="contentDiv">
+        <button class="closeModal" mat-icon-button (click)="toggleShow()"><mat-icon>clear</mat-icon></button>
+        <form (ngSubmit)="onSubmit()" [formGroup]="tagInfo">
+            <mat-form-field>
+                <mat-label>Tag:</mat-label>
+                <input matInput formControlName="tags">
+            </mat-form-field>
+            <button mat-button class="addButton" type="submit">Add</button>
+        </form>
+        <app-tag-list></app-tag-list>
+    </mat-card>
+</div>
+

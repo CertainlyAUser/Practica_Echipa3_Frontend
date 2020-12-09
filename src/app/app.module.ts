@@ -6,27 +6,36 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AnnouncementFormComponent } from './addannouncement/announcement-form/announcement-form.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MatCardModule, MatDatepickerModule, MatFormFieldModule, MatInputModule, MatNativeDateModule, MatRadioModule, MatStepperModule } from '@angular/material';
+import { MatButtonModule, MatCardModule, MatDatepickerModule, MatFormFieldModule, MatIconModule, MatInputModule, MatNativeDateModule, MatRadioModule, MatStepperModule } from '@angular/material';
+import { TagComponent } from './addannouncement/tag/tag.component';
+import { TagListComponent } from './addannouncement/tag-list/tag-list.component';
+import { TagService } from './service/tag.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
     AppComponent,
-    AnnouncementFormComponent
+    AnnouncementFormComponent,
+    TagComponent,
+    TagListComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
+    HttpClientModule,
     MatStepperModule,
     MatFormFieldModule,
     MatInputModule,
     MatCardModule,
     MatRadioModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    MatIconModule,
+    MatButtonModule
   ],
-  providers: [],
+  providers: [TagService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
