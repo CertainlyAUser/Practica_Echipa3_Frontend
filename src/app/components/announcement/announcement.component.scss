@@ -1,0 +1,36 @@
+.card {
+    display: flex;
+    width: 60%;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-evenly;
+    background-color: lightgrey;
+    border-radius: 50px;
+    width: 50%;
+
+    &__title {
+        margin: 20px;
+        font-size: large;
+    }
+
+    &__description {
+        margin: 20px;
+        font-size: medium;
+    }
+
+    &__buttons {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-evenly;
+        margin: 10px 20px;
+
+        * {
+            margin-right: 10px;
+        }
+
+        &__modify-btn {
+            border: 2px solid red;
+        }
+    }
+}
