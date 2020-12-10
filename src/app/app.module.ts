@@ -12,11 +12,10 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home';
 import { LoginComponent } from './login';
 import { RegisterComponent } from './register';
+import { LandingPageComponent } from './landing-page';
 import { AlertComponent } from './_components';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HttpClientModule } from '@angular/common/http';
-
 import { AnnouncementListComponent } from './components/announcement-list/announcement-list.component';
 import { AnnouncementComponent } from './components/announcement/announcement.component';
 
@@ -26,7 +25,7 @@ import { AnnouncementComponent } from './components/announcement/announcement.co
         ReactiveFormsModule,
         HttpClientModule,
         BrowserAnimationsModule,
-        AppRoutingModule
+        appRoutingModule
     ],
     declarations: [
         AppComponent,
@@ -35,7 +34,8 @@ import { AnnouncementComponent } from './components/announcement/announcement.co
         RegisterComponent,
         AlertComponent,
         AnnouncementListComponent,
-        AnnouncementComponent
+        AnnouncementComponent,
+        LandingPageComponent
     ],
     providers: [
         { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
