@@ -49,16 +49,28 @@ export class AnnouncementFormComponent implements OnInit {
       description:['']
     });
     this.timeInfo = this.fb.group({
-      applicationDate:[''],
-      beginDate:['']
+      startDate:[''],
+      limitDate:[''],
+      date:[''],
+      location:['']
     });
     this.miscInfo = this.fb.group({
       link:[''],
       requirements:[''],
-      tags:['']
+      prize:['']
     });
     this.tagInfo = this.fb.group({
       tags:['']
+    });
+
+    this.generalInfo.controls.type.valueChanges.subscribe(value => {
+      if(value == "Contest")
+        this.generalInfo.controls.price.setValidators([Validators.required]);
+      else{
+        console.log("AAAA");
+        this.generalInfo.controls.price.clearValidators();
+        this.generalInfo.controls.price.updateValueAndValidity();
+      }
     });
   }
 

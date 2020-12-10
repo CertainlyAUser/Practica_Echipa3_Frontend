@@ -46,26 +46,40 @@
     <mat-step [stepControl]="timeInfo">
         <ng-template matStepLabel>Time and Space</ng-template>
         <form [formGroup]="timeInfo">
-            <mat-form-field>
-                <mat-label>Application Date:</mat-label>
-                <input matInput formControlName="applicationDate" [matDatepicker]="picker">
+            <mat-form-field *ngIf="generalInfo.controls.type.value == 'Course' || generalInfo.controls.type.value == 'Internship'">
+                <mat-label>Start Date:</mat-label>
+                <input matInput formControlName="startDate" [matDatepicker]="picker">
                 <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                 <mat-datepicker #picker></mat-datepicker>
             </mat-form-field>
             <mat-form-field>
-                <mat-label>Begin Date:</mat-label>
-                <input matInput formControlName="beginDate" [matDatepicker]="picker2">
+                <mat-label>Limit Date:</mat-label>
+                <input matInput formControlName="limitDate" [matDatepicker]="picker2">
                 <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
                 <mat-datepicker #picker2></mat-datepicker>
+            </mat-form-field>
+            <mat-form-field *ngIf="generalInfo.controls.type.value == 'Contest'">
+                <mat-label>Date:</mat-label>
+                <input matInput formControlName="date" [matDatepicker]="picker3">
+                <mat-datepicker-toggle matSuffix [for]="picker3"></mat-datepicker-toggle>
+                <mat-datepicker #picker3></mat-datepicker>
+            </mat-form-field>
+            <mat-form-field *ngIf="generalInfo.controls.type.value == 'Contest'">
+                <mat-label>Location:</mat-label>
+                <input matInput formControlName="location">
             </mat-form-field>
         </form>
     </mat-step>
     <mat-step [stepControl]="miscInfo">
         <ng-template matStepLabel>Other</ng-template>
         <form [formGroup]="miscInfo">
-            <mat-form-field>
+            <mat-form-field *ngIf="generalInfo.controls.type.value == 'Job' || generalInfo.controls.type.value == 'Internship' || generalInfo.controls.type.value == 'ScholarShip'">
                 <mat-label>Requirements:</mat-label>
                 <textarea matInput type="text" formControlName="requirements"></textarea>
+            </mat-form-field>
+            <mat-form-field *ngIf="generalInfo.controls.type.value == 'Contest'">
+                <mat-label>Prize:</mat-label>
+                <textarea matInput type="text" formControlName="prize"></textarea>
             </mat-form-field>
             <!-- <mat-form-field> -->
                 <mat-label>Tags:</mat-label>
