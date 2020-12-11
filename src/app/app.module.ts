@@ -18,6 +18,7 @@ import { AlertComponent } from './_components';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AnnouncementListComponent } from './components/announcement-list/announcement-list.component';
 import { AnnouncementComponent } from './components/announcement/announcement.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
     imports: [
@@ -25,6 +26,7 @@ import { AnnouncementComponent } from './components/announcement/announcement.co
         ReactiveFormsModule,
         HttpClientModule,
         BrowserAnimationsModule,
+        FormsModule,
         appRoutingModule
     ],
     declarations: [
