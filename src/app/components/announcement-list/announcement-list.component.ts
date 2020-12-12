@@ -1,5 +1,4 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Console } from 'console';
 import { Announcement } from 'src/app/models/announcement';
 import { AnnouncementService } from '../../services/announcement.service';
 
@@ -33,7 +32,9 @@ export class AnnouncementListComponent implements OnInit {
     var filteredByImportance: Announcement[] = this.announcements;
     var filteredByType: Announcement[] = this.announcements;
 
-    //const filteredByAge = this.announcements.filter(an => an.age)
+    if (this.age != null) {
+      //filteredByAge = this.announcements.filter(an => an.age == this.age)
+    }
     if (this.importance != null)
     {
       console.log(this.importance)
