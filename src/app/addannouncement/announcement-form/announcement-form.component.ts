@@ -1,13 +1,17 @@
+import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl} from '@angular/forms'
-import { TagService } from 'src/app/service/tag.service';
+import { TagService } from 'src/app/services/tag.service';
 import { TagListComponent } from '../tag-list/tag-list.component';
 import { TagComponent } from '../tag/tag.component';
 
 @Component({
   selector: 'app-announcement-form',
   templateUrl: './announcement-form.component.html',
-  styleUrls: ['./announcement-form.component.scss']
+  styleUrls: ['./announcement-form.component.scss'],
+  providers: [{
+    provide: STEPPER_GLOBAL_OPTIONS, useValue: {showError: true}
+  }]
 })
 export class AnnouncementFormComponent implements OnInit {
 

@@ -9,7 +9,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule, MatCardModule, MatDatepickerModule, MatFormFieldModule, MatIconModule, MatInputModule, MatNativeDateModule, MatRadioModule, MatStepperModule } from '@angular/material';
 import { TagComponent } from './addannouncement/tag/tag.component';
 import { TagListComponent } from './addannouncement/tag-list/tag-list.component';
-import { TagService } from './service/tag.service';
+import { TagService } from './services/tag.service';
 import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({

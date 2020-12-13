@@ -1,5 +1,6 @@
 <mat-card class="formCard"> 
-<mat-horizontal-stepper linear>
+<!-- <mat-horizontal-stepper linear> -->
+<mat-horizontal-stepper > 
     <mat-step [stepControl]="generalInfo">
         <ng-template matStepLabel>General information</ng-template>
         <form [formGroup]="generalInfo">
@@ -82,7 +83,7 @@
                 <textarea matInput type="text" formControlName="prize"></textarea>
             </mat-form-field>
             <!-- <mat-form-field> -->
-                <mat-label>Tags:</mat-label>
+                <!-- <mat-label>Tags:</mat-label> -->
                 <!-- <input matInput type="text" formControlName="tags"> -->
                 <button mat-button (click)="toggleShow()">Add Tags</button>
             <!-- </mat-form-field> -->

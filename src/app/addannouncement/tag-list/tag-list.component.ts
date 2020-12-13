@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { TagService } from 'src/app/service/tag.service';
+import { TagService } from 'src/app/services/tag.service';
 import { TagComponent } from '../tag/tag.component';
 
 @Component({
