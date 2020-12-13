@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { TagComponent } from '../addannouncement/tag/tag.component';
+import { TagComponent } from '../shared/tag/tag.component';
 
 @Injectable({
   providedIn: 'root'

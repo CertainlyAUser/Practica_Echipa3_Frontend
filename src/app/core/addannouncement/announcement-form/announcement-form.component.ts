@@ -2,8 +2,8 @@ import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl} from '@angular/forms'
 import { TagService } from 'src/app/services/tag.service';
-import { TagListComponent } from '../tag-list/tag-list.component';
-import { TagComponent } from '../tag/tag.component';
+import { TagListComponent } from '../../../shared/tag-list/tag-list.component';
+import { TagComponent } from '../../../shared/tag/tag.component';
 
 @Component({
   selector: 'app-announcement-form',
