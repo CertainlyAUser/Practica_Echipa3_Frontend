@@ -9,8 +9,7 @@ import { AnnouncementService } from '../../services/announcement.service';
 })
 export class AnnouncementListComponent implements OnInit {
   public announcements: Announcement[];
-  public filteredAnnouncements: Announcement[];
-  public age: string;
+  public announcementsBackup: Announcement[];
   public importance: number;
   public type: string;
 
@@ -19,7 +18,7 @@ export class AnnouncementListComponent implements OnInit {
 
   ngOnInit() {
     this.getAnnouncements();
-    this.filteredAnnouncements = this.announcements;
+    this.announcementsBackup = this.announcements;
   }
 
   getAnnouncements(): void {
@@ -27,24 +26,21 @@ export class AnnouncementListComponent implements OnInit {
   }
 
   filter(): void {
-    this.announcements = this.filteredAnnouncements;
-    var filteredByAge: Announcement[] = this.announcements;
+    this.announcements = this.announcementsBackup;
     var filteredByImportance: Announcement[] = this.announcements;
     var filteredByType: Announcement[] = this.announcements;
 
-    if (this.age != null) {
-      //filteredByAge = this.announcements.filter(an => an.age == this.age)
-    }
-    if (this.importance != null)
+    if (this.importance != null && this.importance.toString() != "")
     {
       console.log(this.importance)
       filteredByImportance = this.announcements.filter(an => an.importance == this.importance)
+      this.announcements = filteredByImportance;
     }
-    if (this.type != null)
+    if (this.type != null && this.type != "")
     {
       console.log(this.type)
-      filteredByType = filteredByImportance.filter(an => an.type == this.type)
+      filteredByType = this.announcements.filter(an => an.type == this.type)
+      this.announcements = filteredByType
     }
-    this.announcements = filteredByType;
   }
 }
