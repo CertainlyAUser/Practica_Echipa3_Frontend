@@ -4,7 +4,7 @@ import { Observable, of } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { HttpErrorResponse } from '@angular/common/http';
 
-import * as announcementsJson from '../../../db.json'
+import * as announcementsJson from '../../../db.json';
 
 @Injectable({
   providedIn: 'root'
@@ -13,6 +13,7 @@ export class AnnouncementService {
 
   announcements: Announcement[] = announcementsJson.Announcements as Announcement[];
 
+  // tslint:disable-next-line:variable-name
   constructor(private _httpService: HttpClient) { }
 
   getAnnouncements(): Observable<Announcement[]> {
