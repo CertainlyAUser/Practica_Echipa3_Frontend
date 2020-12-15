@@ -11,6 +11,6 @@ interface AnnouncementFormTemplate{
     date: string
     location: string
     prize: string
-    requierments: string
+    requirements: string
     tags: Tag[]
 }

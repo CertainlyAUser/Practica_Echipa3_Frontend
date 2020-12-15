@@ -39,7 +39,7 @@ export class AnnouncementFormComponent implements OnInit {
       'vacantPositions':[''],
       'tags':[''],
     });*/
-    this.announcement = {title:'', type:'',link:'',vacantPositions:5,prize:'',price:5,shortDesc:'',description:'',startDate:'',limitDate:'',date:'',location:'',requierments:'',tags:[]};
+    this.announcement = {title:'', type:'',link:'',vacantPositions:5,prize:'',price:5,shortDesc:'',description:'',startDate:'',limitDate:'',date:'',location:'',requirements:'',tags:[]};
     this.showModal = false;
     this.generalInfo = this.fb.group({
       //title:[null, Validators.required],
@@ -103,7 +103,7 @@ export class AnnouncementFormComponent implements OnInit {
       this.announcement.date = this.timeInfo.controls.date.value;
       this.announcement.location = this.timeInfo.controls.location.value;
       this.announcement.prize = this.miscInfo.controls.prize.value;
-      this.announcement.requierments = this.miscInfo.controls.requirements.value;
+      this.announcement.requirements = this.miscInfo.controls.requirements.value;
       this.announcement.tags = this.ts.getTags();
       this.ts.clear();
     }

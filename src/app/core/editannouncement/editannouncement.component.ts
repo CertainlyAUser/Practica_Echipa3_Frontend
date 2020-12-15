@@ -27,6 +27,17 @@ export class EditannouncementComponent implements OnInit {
       this.announcement = x;
       console.log(x);
       this.generalInfo.controls.title.setValue(x.title);
+      this.generalInfo.controls.type.setValue(x.type);
+      this.generalInfo.controls.link.setValue(x.link);
+      this.generalInfo.controls.vacantPositions.setValue(x.vacantPositions);
+      this.generalInfo.controls.price.setValue(x.price);
+      this.descripInfo.controls.description.setValue(x.description);
+      this.descripInfo.controls.shortDesc.setValue(x.shortDesc);
+      this.timeInfo.controls.startDate.setValue(x.startDate);
+      this.timeInfo.controls.limitDate.setValue(x.limitDate);
+      this.timeInfo.controls.date.setValue(x.date);
+      this.timeInfo.controls.location.setValue(x.location);
+      this.miscInfo.controls.requirements.setValue(x.requirements)
     })
     this.showModal = false;
     this.generalInfo = this.fb.group({
