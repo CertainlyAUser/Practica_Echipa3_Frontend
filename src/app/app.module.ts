@@ -13,16 +13,21 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home';
 import { LoginComponent } from './login';
 import { RegisterComponent } from './register';
+import { LandingPageComponent } from './landing-page';
 import { AlertComponent } from './_components';
 import { AnnouncementListComponent } from './components/announcement-list/announcement-list.component';
 import { AnnouncementComponent } from './components/announcement/announcement.component';
+import { FormsModule } from '@angular/forms';
 
+// @ts-ignore
+// @ts-ignore
 @NgModule({
     imports: [
         BrowserModule,
         ReactiveFormsModule,
         HttpClientModule,
         BrowserAnimationsModule,
+        FormsModule,
         AppRoutingModule
     ],
     declarations: [
@@ -32,7 +37,8 @@ import { AnnouncementComponent } from './components/announcement/announcement.co
         RegisterComponent,
         AlertComponent,
         AnnouncementListComponent,
-        AnnouncementComponent
+        AnnouncementComponent,
+        LandingPageComponent
     ],
     providers: [
         { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },

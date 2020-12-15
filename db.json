@@ -11,7 +11,8 @@
       "link": "http://www.zynksoftware.com/",
       "requirements": "Passionate. Good understanding of OOP principles. Strong interpersonal, communication and willing to learn. Fundamentals in data structures, algorithm design.",
       "vacantPositions": 4,
-      "tags": ""
+      "tags": "",
+      "importance": 2
     },
     {
       "id": 66,
@@ -24,7 +25,8 @@
       "link": "https://internship.it-labs.ro",
       "requirements": "",
       "vacantPositions": 6,
-      "tags": ""
+      "tags": "",
+      "importance": 3
     },
     {
       "id": 524,
@@ -37,7 +39,8 @@
       "link": "https://www.wolfpack-digital.com/jobs/ruby-on-rails-internship",
       "requirements": "Technical student. Fun & Curious. Passionate about building a career in coding.",
       "vacantPositions": 5,
-      "tags": ""
+      "tags": "",
+      "importance": 1
     },
     {
       "id": 23,
@@ -50,7 +53,8 @@
       "link": "https://recruitment.linnify.com/",
       "requirements": "",
       "vacantPositions": 7,
-      "tags": ""
+      "tags": "",
+      "importance": 1
     },
     {
       "id": 98,
@@ -63,7 +67,8 @@
       "link": "https://tapptitude.com",
       "requirements": "Curious, motivated, eager to learn. Good English communication skills. Able to work alone, as well as in a group.",
       "vacantPositions": 4,
-      "tags": ""
+      "tags": "",
+      "importance": 3
     }
   ]
 }

@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { Component, OnInit, Input } from '@angular/core';
 import { Announcement } from 'src/app/models/announcement';
 import { AnnouncementService } from '../../services/announcement.service';
 
@@ -10,14 +9,38 @@ import { AnnouncementService } from '../../services/announcement.service';
 })
 export class AnnouncementListComponent implements OnInit {
   public announcements: Announcement[];
+  public announcementsBackup: Announcement[];
+  public importance: number;
+  public type: string;
 
-  constructor(private announcementService: AnnouncementService) { }
+  constructor(private announcementService: AnnouncementService) {
+   }
 
   ngOnInit() {
     this.getAnnouncements();
+    this.announcementsBackup = this.announcements;
   }
 
   getAnnouncements(): void {
     this.announcementService.getAnnouncements().subscribe(announcements => this.announcements = announcements);
+  }
+
+  filter(): void {
+    this.announcements = this.announcementsBackup;
+    var filteredByImportance: Announcement[] = this.announcements;
+    var filteredByType: Announcement[] = this.announcements;
+
+    if (this.importance != null && this.importance.toString() != "")
+    {
+      console.log(this.importance)
+      filteredByImportance = this.announcements.filter(an => an.importance == this.importance)
+      this.announcements = filteredByImportance;
+    }
+    if (this.type != null && this.type != "")
+    {
+      console.log(this.type)
+      filteredByType = this.announcements.filter(an => an.type == this.type)
+      this.announcements = filteredByType
+    }
   }
 }

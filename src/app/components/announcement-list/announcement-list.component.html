@@ -1,6 +1,30 @@
 <div class="card">
-  <h1>Announcements</h1>
+  <div class="card__filter">
+    <p>Importanță:</p>
+    <select name="importance" [(ngModel)]="importance">
+      <option value=""></option>
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+    </select>
+
+    <p>Tip:</p>
+    <select name="type" [(ngModel)]="type">
+      <option value=""></option>
+      <option value="Internship">Internship</option>
+      <option value="Scholarship">Burse</option>
+      <option value="Course">Cursuri</option>
+      <option value="Event">Evenimente</option>
+      <option value="Contest">Concursuri</option>
+    </select>
+
+    <button (click)="filter()">Caută</button>
+  </div>
+
+  <h1>Anunțuri</h1>
   <ul class="card__list">
-    <li *ngFor="let announcement of announcements"><app-announcement [announcement]="announcement"></app-announcement></li>
+    <li *ngFor="let announcement of announcements">
+      <app-announcement [announcement]="announcement"></app-announcement>
+    </li>
   </ul>
 </div>

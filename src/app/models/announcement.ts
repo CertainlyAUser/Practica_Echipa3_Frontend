@@ -9,4 +9,5 @@ export class Announcement {
     public link: string;
     public requirements: string;
     public vacantPositions: number;
+    public importance: number;
 }
