@@ -19,6 +19,8 @@ import { AnnouncementListComponent } from './components/announcement-list/announ
 import { AnnouncementComponent } from './components/announcement/announcement.component';
 import { FormsModule } from '@angular/forms';
 
+// @ts-ignore
+// @ts-ignore
 @NgModule({
     imports: [
         BrowserModule,
@@ -26,7 +28,7 @@ import { FormsModule } from '@angular/forms';
         HttpClientModule,
         BrowserAnimationsModule,
         FormsModule,
-        appRoutingModule
+        AppRoutingModule
     ],
     declarations: [
         AppComponent,
