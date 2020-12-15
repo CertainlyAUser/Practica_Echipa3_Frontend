@@ -1,0 +1,42 @@
+form {
+    display: flex;
+    flex-direction: column;
+}
+.formCard, .contentDiv{
+    width: 50vw;
+    min-height: 50vh;
+    margin-left: auto;
+    margin-right: auto;
+} 
+.radioButtons{
+    display: flex;
+    flex-direction: column;
+}
+.radioButton{
+    margin-top: 15px;
+}
+mat-form-field{
+    padding-top: 15px;
+}
+.modalDiv{
+    position: absolute;
+    top: 0;
+    background-color: rgba(185, 185, 185,0.3);
+    //opacity: 30%;
+    width: 100vw;
+    height: 100vh;
+    z-index: 20;
+}
+.closeModal{
+    display: block;
+    margin-left: auto;
+}
+.contentDiv{
+    margin-top: auto;
+    margin-bottom: auto;
+}
+.addButton{
+    width: 20%;
+    margin-left: auto;
+    margin-right: auto;
+}

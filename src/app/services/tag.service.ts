@@ -1,7 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { TagComponent } from '../shared/tag/tag.component';
 
 @Injectable({
   providedIn: 'root'
@@ -28,6 +27,10 @@ export class TagService {
     this.tagList.splice(b,1);
     console.log(this.tagList);
   }
+
+  public clear() : void{
+    this.tagList = [];
+  } 
 
   public getTags() : Tag[] {
     return this.tagList;
