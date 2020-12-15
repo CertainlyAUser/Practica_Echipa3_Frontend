@@ -11,7 +11,14 @@
 		"link": "http://www.zynksoftware.com/",
 		"requirements": "Passionate. Good understanding of OOP principles. Strong interpersonal, communication and willing to learn. Fundamentals in data structures, algorithm design.",
 		"vacantPositions": "4",
-		"tags": ""
+		"tags": [
+					{"id":1, "text":"Tag1"},
+					{"id":2, "text":"Tag2"},
+					{"id":3, "text":"Tag3"},
+					{"id":4, "text":"Tag4"},
+					{"id":5, "text":"Tag5"},
+					{"id":6, "text":"Tag6"}
+				]
 	  },
 	  {
 		"id": 66,
