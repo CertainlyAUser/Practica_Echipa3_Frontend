@@ -26,7 +26,8 @@ import { EditannouncementComponent } from './editannouncement/editannouncement.c
     MatButtonModule,
   ],
   exports: [
-    AnnouncementFormComponent
+    AnnouncementFormComponent,
+    EditannouncementComponent
   ]
 })
 export class CoreModule { }

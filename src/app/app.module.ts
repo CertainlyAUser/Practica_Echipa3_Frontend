@@ -21,7 +21,6 @@ import { LandingPageComponent } from './landing-page';
 import { AlertComponent } from './_components';
 import { AnnouncementListComponent } from './components/announcement-list/announcement-list.component';
 import { AnnouncementComponent } from './components/announcement/announcement.component';
-import { FormsModule } from '@angular/forms';
 
 // @ts-ignore
 // @ts-ignore
@@ -34,7 +33,7 @@ import { FormsModule } from '@angular/forms';
     AlertComponent,
     AnnouncementListComponent,
     AnnouncementComponent,
-    LandingPageComponent
+    LandingPageComponent,
   ],
   imports: [
     BrowserModule,
