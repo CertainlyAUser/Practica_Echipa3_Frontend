@@ -19,4 +19,8 @@ export class AnnouncementService {
   getAnnouncements(): Observable<Announcement[]> {
     return of(this.announcements);
   }
+
+  getAnnouncementById(id: number): Announcement {
+    return this.announcements.find(c => c.id === id);
+  }
 }

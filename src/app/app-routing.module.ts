@@ -7,6 +7,7 @@ import { LandingPageComponent } from './landing-page';
 import { LoginComponent } from './login';
 import { RegisterComponent } from './register';
 import { AuthGuard } from './_helpers';
+import {AnnouncementDetailsComponent} from './components/announcement-details/announcement-details.component';
 
 const routes: Routes = [
   { path: '', component: LandingPageComponent },
@@ -14,6 +15,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'landing-page', component: LandingPageComponent },
+  { path: 'announcement-details/:id', component: AnnouncementDetailsComponent},
 
   // otherwise redirect to home
   { path: '**', redirectTo: '' }

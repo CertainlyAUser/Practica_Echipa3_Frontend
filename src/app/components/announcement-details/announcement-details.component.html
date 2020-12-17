@@ -6,15 +6,18 @@
     <br>
     <p>{{announcement.description}}</p>
     <br>
-    <p>{{announcement.applicationDate}}</p>
+    <p>Aplica pana la {{announcement.applicationDate}}</p>
     <br>
-    <p>{{announcement.beginDate}}</p>
+    <p>Data de incepere: {{announcement.beginDate}}</p>
     <br>
-    <p>{{announcement.duration}}</p>
+    <p>Durata: {{announcement.duration}}</p>
     <br>
-    <p>{{announcement.requirements}}</p>
+    <p>Cerinte: {{announcement.requirements}}</p>
     <br>
-    <p>{{announcement.vacantPositions}}</p>
+    <p>Vacant positions: {{announcement.vacantPositions}}</p>
     <br>
     <a href="{{announcement.link}}">Aplica aici!</a>
+</div>
+<div *ngIf="!announcement">
+    <p>Announcement not found</p>
 </div>
