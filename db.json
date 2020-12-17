@@ -10,7 +10,8 @@
 		"duration": "3 luni",
 		"link": "http://www.zynksoftware.com/",
 		"requirements": "Passionate. Good understanding of OOP principles. Strong interpersonal, communication and willing to learn. Fundamentals in data structures, algorithm design.",
-		"vacantPositions": "4",
+		"vacantPositions": 4,
+		"importance": 0,
 		"tags": [
 					{"id":1, "text":"Tag1"},
 					{"id":2, "text":"Tag2"},
@@ -30,7 +31,8 @@
 		"duration": "2 luni",
 		"link": "https://internship.it-labs.ro",
 		"requirements": "",
-		"vacantPositions": "6",
+		"vacantPositions": 6,
+		"importance": 0,
 		"tags": ""
 	  },
 	  {
@@ -43,7 +45,8 @@
 		"duration": "6 saptamani",
 		"link": "https://www.wolfpack-digital.com/jobs/ruby-on-rails-internship",
 		"requirements": "Technical student. Fun & Curious. Passionate about building a career in coding.",
-		"vacantPositions": "5",
+		"vacantPositions": 5,
+		"importance": 0,
 		"tags": ""
 	  },
 	  {
@@ -56,7 +59,8 @@
 		"duration": "6 saptamani",
 		"link": "https://recruitment.linnify.com/",
 		"requirements": "",
-		"vacantPositions": "7",
+		"vacantPositions": 7,
+		"importance": 0,
 		"tags": ""
 	  },
 	  {
@@ -69,7 +73,8 @@
 		"duration": "2 luni",
 		"link": "https://tapptitude.com",
 		"requirements": "Curious, motivated, eager to learn. Good English communication skills. Able to work alone, as well as in a group.",
-		"vacantPositions": "4",
+		"vacantPositions": 4,
+		"importance": 0,
 		"tags": ""
 	  }
   ],
