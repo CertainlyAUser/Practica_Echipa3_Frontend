@@ -31,9 +31,10 @@ const routes: Routes = [
   // otherwise redirect to home
   { path: '**', redirectTo: '' }
 ];
+const config = {useHash:true,enableTracing:true};
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, config)],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
