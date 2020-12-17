@@ -10,14 +10,13 @@ export class AnnouncementComponent implements OnInit {
 
   @Input() announcement: Announcement;
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit() {
   }
 
   public apply() {}
-
-  public seeDetails() {}
 
   public modify() {}
 }

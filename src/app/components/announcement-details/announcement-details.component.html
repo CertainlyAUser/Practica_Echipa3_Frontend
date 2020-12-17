@@ -1,0 +1,23 @@
+
+<div *ngIf="announcement" style="margin-top: 60px">
+    <p>{{announcement.title}}</p>
+    <br>
+    <p>{{announcement.type}}</p>
+    <br>
+    <p>{{announcement.description}}</p>
+    <br>
+    <p>Aplica pana la {{announcement.applicationDate}}</p>
+    <br>
+    <p>Data de incepere: {{announcement.beginDate}}</p>
+    <br>
+    <p>Durata: {{announcement.duration}}</p>
+    <br>
+    <p>Cerinte: {{announcement.requirements}}</p>
+    <br>
+    <p>Vacant positions: {{announcement.vacantPositions}}</p>
+    <br>
+    <a href="{{announcement.link}}">Aplica aici!</a>
+</div>
+<div *ngIf="!announcement">
+    <p>Announcement not found</p>
+</div>
