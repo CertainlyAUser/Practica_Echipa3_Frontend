@@ -20,6 +20,7 @@ export class UserAnnouncementListComponent implements OnInit {
 
   ngOnInit() {
     this.getAnnouncements();
+    this.announcementsBackup = this.announcements;
     this.user = this.authService.currentUserValue;
 
     if (this.user) {
@@ -33,7 +34,8 @@ export class UserAnnouncementListComponent implements OnInit {
 
   filterForUser(): void {
     this.announcements = this.announcementsBackup;
-    var userAnnouncements = this.announcements.filter(an => an.user == this.user);
+    var userAnnouncements = this.announcements.filter(an => an.user.id == this.user.id);
+    console.log(this.user);
     this.announcements = userAnnouncements;
   }
 }
