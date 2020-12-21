@@ -1,0 +1,8 @@
+<div class="card">
+  <h1>Anunțurile tale</h1>
+  <ul class="card__list">
+    <li *ngFor="let announcement of announcements">
+      <app-announcement [announcement]="announcement"></app-announcement>
+    </li>
+  </ul>
+</div>
