@@ -19,8 +19,16 @@
 					{"id":4, "text":"Tag4"},
 					{"id":5, "text":"Tag5"},
 					{"id":6, "text":"Tag6"}
-				]
-	  },
+        ],
+    "user": {
+      "id": 1,
+      "username": "ayaya",
+      "password": "parola",
+      "companyName": "Gearbox",
+      "token": ""
+      }
+    },
+
 	  {
 		"id": 66,
 		"title": "IT-Labs Internship Opportunity",
@@ -33,7 +41,14 @@
 		"requirements": "",
 		"vacantPositions": 6,
 		"importance": 0,
-		"tags": ""
+		"tags": "",
+    "user": {
+      "id": 1,
+      "username": "ayaya",
+      "password": "parola",
+      "companyName": "Gearbox",
+      "token": ""
+      }
 	  },
 	  {
 		"id": 524,
@@ -47,7 +62,14 @@
 		"requirements": "Technical student. Fun & Curious. Passionate about building a career in coding.",
 		"vacantPositions": 5,
 		"importance": 0,
-		"tags": ""
+		"tags": "",
+    "user": {
+      "id": 1,
+      "username": "ayaya",
+      "password": "parola",
+      "companyName": "Gearbox",
+      "token": ""
+      }
 	  },
 	  {
 		"id": 23,
@@ -61,7 +83,14 @@
 		"requirements": "",
 		"vacantPositions": 7,
 		"importance": 0,
-		"tags": ""
+		"tags": "",
+    "user": {
+      "id": 1,
+      "username": "ayaya",
+      "password": "parola",
+      "companyName": "Gearbox",
+      "token": ""
+      }
 	  },
 	  {
 		"id": 98,
@@ -75,7 +104,14 @@
 		"requirements": "Curious, motivated, eager to learn. Good English communication skills. Able to work alone, as well as in a group.",
 		"vacantPositions": 4,
 		"importance": 0,
-		"tags": ""
+		"tags": "",
+    "user": {
+      "id": 1,
+      "username": "ayaya",
+      "password": "parola",
+      "companyName": "Gearbox",
+      "token": ""
+      }
 	  }
   ],
   "tags":[
