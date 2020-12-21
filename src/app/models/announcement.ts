@@ -12,5 +12,4 @@ export class Announcement {
     public requirements: string;
     public vacantPositions: number;
     public importance: number;
-    public user: User;
 }

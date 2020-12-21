@@ -1,10 +1,4 @@
 <div class="card">
   <h1 class="card__title">{{announcement.title}}</h1>
   <p class="card__description">{{announcement.description}}</p>
-
-  <div class="card__buttons">
-    <button (click)="apply()" class="card__buttons__apply-btn">Aplică</button>
-    <button routerLink="/announcement-details/ {{announcement.id}}" class="nav-item nav-link">Detalii</button>
-    <button (click)="modify()" class="card__buttons__modify-btn">Modifică</button>
-  </div>
 </div>

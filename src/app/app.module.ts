@@ -20,8 +20,9 @@ import { RegisterComponent } from './register';
 import { LandingPageComponent } from './landing-page';
 import { AlertComponent } from './_components';
 import { AnnouncementListComponent } from './components/announcement-list/announcement-list.component';
+import { UserAnnouncementListComponent } from './components/user-announcement-list/user-announcement-list.component';
 import { AnnouncementComponent } from './components/announcement/announcement.component';
-import {AnnouncementDetailsComponent} from './components/announcement-details/announcement-details.component';
+import { AnnouncementDetailsComponent } from './components/announcement-details/announcement-details.component';
 
 // @ts-ignore
 // @ts-ignore
@@ -33,6 +34,7 @@ import {AnnouncementDetailsComponent} from './components/announcement-details/an
     RegisterComponent,
     AlertComponent,
     AnnouncementListComponent,
+    UserAnnouncementListComponent,
     AnnouncementComponent,
     LandingPageComponent,
     AnnouncementDetailsComponent
