@@ -23,7 +23,6 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
-  { path: 'landing-page', component: LandingPageComponent },
   { path: 'announcement-details/:id', component: AnnouncementDetailsComponent },
 
   // otherwise redirect to home
