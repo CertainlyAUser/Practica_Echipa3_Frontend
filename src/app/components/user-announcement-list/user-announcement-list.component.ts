@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Announcement } from 'src/app/models/announcement';
+import { AnnouncementService } from '../../services/announcement.service';
+import { User } from '../../_user_model/user';
+import { AuthenticationService } from '../../_services/authentication.service';
 
 @Component({
   selector: 'app-user-announcement-list',
@@ -6,10 +10,30 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./user-announcement-list.component.scss']
 })
 export class UserAnnouncementListComponent implements OnInit {
+  public announcements: Announcement[];
+  public announcementsBackup: Announcement[];
+  public importance: number;
+  public type: string;
+  public user: User;
 
-  constructor() { }
+  constructor(private announcementService: AnnouncementService, private authService: AuthenticationService) { }
 
   ngOnInit() {
+    this.getAnnouncements();
+    this.user = this.authService.currentUserValue;
+
+    if (this.user) {
+      this.filterForUser();
+    }
+  }
+  
+  getAnnouncements(): void {
+    this.announcementService.getAnnouncements().subscribe(announcements => this.announcements = announcements);
   }
 
+  filterForUser(): void {
+    this.announcements = this.announcementsBackup;
+    var userAnnouncements = this.announcements.filter(an => an.user == this.user);
+    this.announcements = userAnnouncements;
+  }
 }
