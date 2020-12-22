@@ -6,7 +6,7 @@ import {AnnouncementService} from '../../services/announcement.service';
 @Component({
     selector: 'app-announcement-details',
     templateUrl: './announcement-details.component.html',
-    styleUrls: ['./announcement-details.component.css']
+    styleUrls: ['./announcement-details.component.scss']
 })
 @Injectable({ providedIn: 'root'})
 export class AnnouncementDetailsComponent implements OnInit {
