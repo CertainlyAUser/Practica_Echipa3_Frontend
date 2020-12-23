@@ -1,6 +1,6 @@
 
 <div *ngIf="announcement" class="details-card">
-    <p style="font-size: larger"><b>{{announcement.title}}</b></p>
+    <p style="font-size: larger"><strong>{{announcement.title}}</strong></p>
     <p><strong>Tip: </strong>{{announcement.type}}</p>
     <p><strong>Descriere: </strong>{{announcement.description}}</p>
     <p><strong>Aplică până la data de: </strong>{{announcement.applicationDate}}</p>
@@ -8,7 +8,8 @@
     <p><strong>Durata: </strong>{{announcement.duration}}</p>
     <p><strong>Cerințe: </strong>{{announcement.requirements}}</p>
     <p><strong>Poziții libere: </strong>{{announcement.vacantPositions}}</p>
-    <a href="{{announcement.link}}">Aplica aici!</a>
+    <a *ngIf="!currentUser" href="{{announcement.link}}">Aplica aici!</a>
+    <a *ngIf="currentUser" routerLink="/edit/{{announcement.id}}">Edit</a>
 </div>
 <div *ngIf="!announcement">
     <p>Announcement not found</p>
