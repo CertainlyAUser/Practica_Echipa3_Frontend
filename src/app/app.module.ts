@@ -14,14 +14,15 @@ import { TagService } from './services/tag.service';
 import { SharedModule } from './shared/shared.module';
 import { CoreModule } from './core/core.module';
 
-import { HomeComponent } from './home';
-import { LoginComponent } from './login';
-import { RegisterComponent } from './register';
-import { LandingPageComponent } from './landing-page';
-import { AlertComponent } from './_components';
+import { HomeComponent } from './home/home.component';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
+import { LandingPageComponent } from './landing-page/landing-page.component';
+import { AlertComponent } from './_components/alert.component';
 import { AnnouncementListComponent } from './components/announcement-list/announcement-list.component';
+import { UserAnnouncementListComponent } from './components/user-announcement-list/user-announcement-list.component';
 import { AnnouncementComponent } from './components/announcement/announcement.component';
-import {AnnouncementDetailsComponent} from './components/announcement-details/announcement-details.component';
+import { AnnouncementDetailsComponent } from './components/announcement-details/announcement-details.component';
 
 // @ts-ignore
 // @ts-ignore
@@ -33,6 +34,7 @@ import {AnnouncementDetailsComponent} from './components/announcement-details/an
     RegisterComponent,
     AlertComponent,
     AnnouncementListComponent,
+    UserAnnouncementListComponent,
     AnnouncementComponent,
     LandingPageComponent,
     AnnouncementDetailsComponent
