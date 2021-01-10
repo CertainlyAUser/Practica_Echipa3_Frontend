@@ -19,7 +19,7 @@ export class AppComponent {
   }
 
   toggle() {
-    if (this.router.url === '/landing-page') {
+    if (this.router.url === '/landing-page' || this.router.url === '/') {
       return  1;
     } else if (this.router.url === '/home') {
       return  0;
