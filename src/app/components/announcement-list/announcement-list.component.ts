@@ -30,15 +30,13 @@ export class AnnouncementListComponent implements OnInit {
     var filteredByImportance: Announcement[] = this.announcements;
     var filteredByType: Announcement[] = this.announcements;
 
-    if (this.importance != null && this.importance.toString() != "")
+    if (this.importance)
     {
-      console.log(this.importance)
       filteredByImportance = this.announcements.filter(an => an.importance == this.importance)
       this.announcements = filteredByImportance;
     }
-    if (this.type != null && this.type != "")
+    if (this.type)
     {
-      console.log(this.type)
       filteredByType = this.announcements.filter(an => an.type == this.type)
       this.announcements = filteredByType
     }

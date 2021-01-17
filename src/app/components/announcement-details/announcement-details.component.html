@@ -1,22 +1,15 @@
 
-<div *ngIf="announcement" style="margin-top: 60px">
-    <p>{{announcement.title}}</p>
-    <br>
-    <p>{{announcement.type}}</p>
-    <br>
-    <p>{{announcement.description}}</p>
-    <br>
-    <p>Aplica pana la {{announcement.applicationDate}}</p>
-    <br>
-    <p>Data de incepere: {{announcement.beginDate}}</p>
-    <br>
-    <p>Durata: {{announcement.duration}}</p>
-    <br>
-    <p>Cerinte: {{announcement.requirements}}</p>
-    <br>
-    <p>Vacant positions: {{announcement.vacantPositions}}</p>
-    <br>
-    <a href="{{announcement.link}}">Aplica aici!</a>
+<div *ngIf="announcement" class="details-card">
+    <p style="font-size: larger"><strong>{{announcement.title}}</strong></p>
+    <p><strong>Tip: </strong>{{announcement.type}}</p>
+    <p><strong>Descriere: </strong>{{announcement.description}}</p>
+    <p><strong>Aplică până la data de: </strong>{{announcement.applicationDate}}</p>
+    <p><strong>Data de începere: </strong>{{announcement.beginDate}}</p>
+    <p><strong>Durata: </strong>{{announcement.duration}}</p>
+    <p><strong>Cerințe: </strong>{{announcement.requirements}}</p>
+    <p><strong>Poziții libere: </strong>{{announcement.vacantPositions}}</p>
+    <a *ngIf="!currentUser" href="{{announcement.link}}">Aplica aici!</a>
+    <a *ngIf="currentUser" routerLink="/edit/{{announcement.id}}">Edit</a>
 </div>
 <div *ngIf="!announcement">
     <p>Announcement not found</p>

@@ -1,3 +1,5 @@
+import { User } from '../_user_model/user';
+
 export class Announcement {
     public id: number;
     public title: string;
@@ -10,4 +12,5 @@ export class Announcement {
     public requirements: string;
     public vacantPositions: number;
     public importance: number;
+    public user: User;
 }

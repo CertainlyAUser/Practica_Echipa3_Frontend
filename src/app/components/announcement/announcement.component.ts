@@ -7,7 +7,6 @@ import { Announcement } from '../../models/announcement';
   styleUrls: ['./announcement.component.scss']
 })
 export class AnnouncementComponent implements OnInit {
-
   @Input() announcement: Announcement;
 
   constructor() {
@@ -15,8 +14,4 @@ export class AnnouncementComponent implements OnInit {
 
   ngOnInit() {
   }
-
-  public apply() {}
-
-  public modify() {}
 }
