@@ -17,6 +17,7 @@ import { TagComponent } from '../../../shared/tag/tag.component';
 export class AnnouncementFormComponent implements OnInit {
 
   //public announcForm : FormGroup;
+  private curentImage : File;
   private announcement: AnnouncementFormTemplate;
   private showModal : boolean;
   public generalInfo : FormGroup;
@@ -24,6 +25,7 @@ export class AnnouncementFormComponent implements OnInit {
   public timeInfo : FormGroup;
   public miscInfo : FormGroup;
   public tagInfo : FormGroup;
+  public imageInfo : FormGroup;
 
   constructor(private fb : FormBuilder, private ts : TagService) { }
 
@@ -68,6 +70,9 @@ export class AnnouncementFormComponent implements OnInit {
     this.tagInfo = this.fb.group({
       tags:['']
     });
+    this.imageInfo = this.fb.group({
+      image:['']
+    });
 
     this.generalInfo.controls.type.valueChanges.subscribe(value => {
       if(value == "Contest")
@@ -108,5 +113,11 @@ export class AnnouncementFormComponent implements OnInit {
       this.ts.clear();
     }
     console.log(this.announcement);
+  }
+  
+  onImageChange(event){
+      //console.log(event);
+      this.curentImage = event.target.files.item(0);
+      //console.log(this.curentImage);
   }
 }
