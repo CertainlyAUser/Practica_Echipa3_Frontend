@@ -28,7 +28,7 @@ export class AnnouncementService {
     var formData = new FormData();
     formData.append("announcement", file)
     console.log("AAA");
-    this._httpService.post("localhost:8080/image/save", formData).subscribe(
+    this._httpService.post("http://localhost:8080/image/save", formData).subscribe(
       (response) => console.log(response),
       (error) => console.log(error)
     )
