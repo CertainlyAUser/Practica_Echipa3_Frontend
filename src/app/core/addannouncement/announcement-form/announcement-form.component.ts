@@ -2,6 +2,7 @@ import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
 import { registerLocaleData } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl} from '@angular/forms'
+import { AnnouncementService } from 'src/app/services/announcement.service';
 import { TagService } from 'src/app/services/tag.service';
 import { TagListComponent } from '../../../shared/tag-list/tag-list.component';
 import { TagComponent } from '../../../shared/tag/tag.component';
@@ -27,7 +28,7 @@ export class AnnouncementFormComponent implements OnInit {
   public tagInfo : FormGroup;
   public imageInfo : FormGroup;
 
-  constructor(private fb : FormBuilder, private ts : TagService) { }
+  constructor(private fb : FormBuilder, private ts : TagService, private ans : AnnouncementService) { }
 
   ngOnInit() {
     /*this.announcForm = this.fb.group({
@@ -118,6 +119,7 @@ export class AnnouncementFormComponent implements OnInit {
   onImageChange(event){
       //console.log(event);
       this.curentImage = event.target.files.item(0);
+      this.ans.saveImager(this.curentImage);
       //console.log(this.curentImage);
   }
 }
