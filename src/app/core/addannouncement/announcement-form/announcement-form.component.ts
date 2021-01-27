@@ -98,6 +98,7 @@ export class AnnouncementFormComponent implements OnInit {
 
   createAnnouncement(){
     if( this.generalInfo.valid && this.descripInfo.valid && this.timeInfo.valid && this.miscInfo.valid){
+      this.ans.saveImager(this.curentImage);
       this.announcement.title = this.generalInfo.controls.title.value;
       this.announcement.link = this.generalInfo.controls.link.value;
       this.announcement.type = this.generalInfo.controls.type.value;
@@ -118,9 +119,6 @@ export class AnnouncementFormComponent implements OnInit {
   }
   
   onImageChange(event){
-      //console.log(event);
       this.curentImage = event.target.files.item(0);
-      this.ans.saveImager(this.curentImage);
-      //console.log(this.curentImage);
   }
 }

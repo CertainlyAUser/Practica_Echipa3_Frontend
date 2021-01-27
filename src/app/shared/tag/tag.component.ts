@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { TagService } from 'src/app/services/tag.service';
+import { Tag } from '../../model/tag.model';
 
 @Component({
   selector: 'app-tag',
