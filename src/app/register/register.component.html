@@ -8,6 +8,20 @@
         </div>
     </div>
     <div class="form-group">
+        <label for="telNumber">Telephone number</label>
+        <input type="text" formControlName="telNumber" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.telNumber.errors }" />
+        <div *ngIf="submitted && f.telNumber.errors" class="invalid-feedback">
+            <div *ngIf="f.telNumber.errors.required">Telephone number is required</div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" formControlName="email" ngModel email="true" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
+        <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+            <div *ngIf="f.email.errors.required">Email is required</div>
+        </div>
+    </div>
+    <div class="form-group">
         <label for="username">Username</label>
         <input type="text" formControlName="username" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" />
         <div *ngIf="submitted && f.username.errors" class="invalid-feedback">

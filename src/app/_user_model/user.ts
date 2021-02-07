@@ -3,5 +3,7 @@ export class User {
     username: string;
     password: string;
     companyName: string;
+    telNumber: string;
+    email: string;
     token: string;
 }
