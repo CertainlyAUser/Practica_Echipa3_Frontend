@@ -12,7 +12,7 @@ export class UserService {
     }
 
     register(user: User) {
-        return this.http.post(`/users/register`, user);
+        return this.http.post("http://localhost:8080/users/sign-up", {"username":user.username, "password":user.password});
     }
 
     delete(id: number) {

@@ -20,13 +20,27 @@ export class AuthenticationService {
     }
 
     login(username, password) {
-        return this.http.post<any>(`localhost:4200/authenticate`, { username, password })
-            .pipe(map(user => {
-                // store user details and jwt token in local storage to keep user logged in between page refreshes
-                localStorage.setItem('currentUser', JSON.stringify(user));
-                this.currentUserSubject.next(user);
-                return user;
-            }));
+        // return this.http.post<any>(`localhost:4200/authenticate`, { username, password })
+        //     .pipe(map(user => {
+        //         // store user details and jwt token in local storage to keep user logged in between page refreshes
+        //         localStorage.setItem('currentUser', JSON.stringify(user));
+        //         console.log(JSON.stringify(user));
+        //         this.currentUserSubject.next(user);
+        //         return user;
+        //     }));
+        console.log("A");
+        // return this.http.post<any>("http://localhost:8080/login", { "username":username, "password":password }, {observe:'response'})
+        //         .subscribe(res => console.log(res.headers.get("authorization").split(' ')[1]));
+        return this.http.post<any>("http://localhost:8080/login", { "username":username, "password":password }, {observe:'response'})
+                .pipe(map(res => {
+                    console.log(res);
+                    var user = new User();
+                    user.token = res.headers.get("authorization").split(' ')[1];
+                    console.log(user);
+                    localStorage.setItem('currentUser', JSON.stringify(user));
+                    this.currentUserSubject.next(user);
+                    return user;
+                }));
     }
 
     logout() {

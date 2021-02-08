@@ -2,6 +2,7 @@ import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
 import { registerLocaleData } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl} from '@angular/forms'
+import { AnnouncementService } from 'src/app/services/announcement.service';
 import { TagService } from 'src/app/services/tag.service';
 import { TagListComponent } from '../../../shared/tag-list/tag-list.component';
 import { TagComponent } from '../../../shared/tag/tag.component';
@@ -25,7 +26,7 @@ export class AnnouncementFormComponent implements OnInit {
   public miscInfo : FormGroup;
   public tagInfo : FormGroup;
 
-  constructor(private fb : FormBuilder, private ts : TagService) { }
+  constructor(private fb : FormBuilder, private ts : TagService, private ann : AnnouncementService) { }
 
   ngOnInit() {
     /*this.announcForm = this.fb.group({
@@ -106,6 +107,7 @@ export class AnnouncementFormComponent implements OnInit {
       this.announcement.requirements = this.miscInfo.controls.requirements.value;
       this.announcement.tags = this.ts.getTags();
       this.ts.clear();
+      this.ann.postAnnouncement(this.announcement);
     }
     console.log(this.announcement);
   }
