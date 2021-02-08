@@ -1,4 +1,4 @@
-import { User } from '../_user_model/user';
+import { User } from '../_user_model';
 
 export class Announcement {
     public id: number;
@@ -13,4 +13,5 @@ export class Announcement {
     public vacantPositions: number;
     public importance: number;
     public user: User;
+    public tags: any;
 }
