@@ -43,6 +43,7 @@ export class AnnouncementFormComponent implements OnInit {
       'vacantPositions':[''],
       'tags':[''],
     });*/
+    this.ts.clear();
     this.announcement = {title:'', type:'',link:'',vacantPositions:5,prize:'',price:5,shortDesc:'',description:'',startDate:'',limitDate:'',date:'',location:'',requirements:'',details:'',tags:[]};
     this.showModal = false;
     this.generalInfo = this.fb.group({
@@ -99,7 +100,7 @@ export class AnnouncementFormComponent implements OnInit {
 
   createAnnouncement(){
     if( this.generalInfo.valid && this.descripInfo.valid && this.timeInfo.valid && this.miscInfo.valid){
-      this.ann.saveImager(this.curentImage);
+      //this.ann.saveImager(this.curentImage);
       this.announcement.title = this.generalInfo.controls.title.value;
       this.announcement.link = this.generalInfo.controls.link.value;
       this.announcement.type = this.generalInfo.controls.type.value;
@@ -116,7 +117,7 @@ export class AnnouncementFormComponent implements OnInit {
       this.announcement.details = this.miscInfo.controls.details.value;
       this.announcement.tags = this.ts.getTags();
       this.ts.clear();
-      this.ann.postAnnouncement(this.announcement);
+      this.ann.postAnnouncement(this.announcement, this.curentImage);
     }
     console.log(this.announcement);
   }
