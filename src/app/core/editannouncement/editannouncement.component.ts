@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators, FormControl} from '@angular/forms'
 import { ActivatedRoute } from '@angular/router';
 import { EditformService } from 'src/app/services/editform.service';
 import { TagService } from 'src/app/services/tag.service';
+import { AnnouncementFormTemplate } from '../../model/add-announcement.model';
 
 @Component({
   selector: 'app-editannouncement',

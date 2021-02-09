@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { TagService } from 'src/app/services/tag.service';
 import { TagComponent } from '../tag/tag.component';
+import { Tag } from '../../model/tag.model';
 
 @Component({
   selector: 'app-tag-list',

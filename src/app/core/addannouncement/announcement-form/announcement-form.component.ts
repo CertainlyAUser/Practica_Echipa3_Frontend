@@ -4,6 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl} from '@angular/forms'
 import { AnnouncementService } from 'src/app/services/announcement.service';
 import { TagService } from 'src/app/services/tag.service';
+import { AnnouncementFormTemplate } from '../../../model/add-announcement.model';
 import { TagListComponent } from '../../../shared/tag-list/tag-list.component';
 import { TagComponent } from '../../../shared/tag/tag.component';
 
@@ -18,6 +19,7 @@ import { TagComponent } from '../../../shared/tag/tag.component';
 export class AnnouncementFormComponent implements OnInit {
 
   //public announcForm : FormGroup;
+  private curentImage : File;
   private announcement: AnnouncementFormTemplate;
   private showModal : boolean;
   public generalInfo : FormGroup;
@@ -25,6 +27,7 @@ export class AnnouncementFormComponent implements OnInit {
   public timeInfo : FormGroup;
   public miscInfo : FormGroup;
   public tagInfo : FormGroup;
+  public imageInfo : FormGroup;
 
   constructor(private fb : FormBuilder, private ts : TagService, private ann : AnnouncementService) { }
 
@@ -70,6 +73,9 @@ export class AnnouncementFormComponent implements OnInit {
     this.tagInfo = this.fb.group({
       tags:['']
     });
+    this.imageInfo = this.fb.group({
+      image:['']
+    });
 
     this.generalInfo.controls.type.valueChanges.subscribe(value => {
       if(value == "Contest")
@@ -93,6 +99,7 @@ export class AnnouncementFormComponent implements OnInit {
 
   createAnnouncement(){
     if( this.generalInfo.valid && this.descripInfo.valid && this.timeInfo.valid && this.miscInfo.valid){
+      this.ann.saveImager(this.curentImage);
       this.announcement.title = this.generalInfo.controls.title.value;
       this.announcement.link = this.generalInfo.controls.link.value;
       this.announcement.type = this.generalInfo.controls.type.value;
@@ -112,5 +119,9 @@ export class AnnouncementFormComponent implements OnInit {
       this.ann.postAnnouncement(this.announcement);
     }
     console.log(this.announcement);
+  }
+  
+  onImageChange(event){
+      this.curentImage = event.target.files.item(0);
   }
 }

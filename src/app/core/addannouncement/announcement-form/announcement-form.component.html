@@ -33,6 +33,9 @@
                 <input matInput type="text" formControlName="price">
             </mat-form-field>
         </form>
+        <form [formGroup]="imageInfo">
+            <input type="file" formControlName="image" (change)="onImageChange($event)">
+        </form>
     </mat-step>
     <mat-step [stepControl]="descripInfo">
         <ng-template matStepLabel>Description</ng-template>
@@ -115,4 +118,3 @@
         <app-tag-list></app-tag-list>
     </mat-card>
 </div>
-
