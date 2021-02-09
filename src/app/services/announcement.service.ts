@@ -22,6 +22,10 @@ export class AnnouncementService {
   //   return of(this.announcements);
   // }
   getAnnouncements(): Observable<Announcement[]> {
+    let headers = new HttpHeaders({
+      'Content-Type':'application/json',
+      'Authorization': this.auth.currentUserValue.token
+    });
     return this._httpService.get<any>("http://localhost:8080/announcements");
   }
 
