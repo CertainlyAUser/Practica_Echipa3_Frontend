@@ -112,6 +112,7 @@ export class EditannouncementComponent implements OnInit {
       this.announcement.location = this.timeInfo.controls.location.value;
       this.announcement.prize = this.miscInfo.controls.prize.value;
       this.announcement.requirements = this.miscInfo.controls.requirements.value;
+      this.announcement.details = this.miscInfo.controls.details.value;
       this.announcement.tags = this.ts.getTags();
       this.ts.clear();
     }

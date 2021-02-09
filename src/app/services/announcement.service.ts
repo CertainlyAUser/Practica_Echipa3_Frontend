@@ -59,7 +59,7 @@ export class AnnouncementService {
                 this._httpService.post("http://localhost:8080/jobs",
                   {     
                     "id":res2.id,
-                    "requirments":announcement.requirements,
+                    "requirements":announcement.requirements,
                     "limitDate":announcement.limitDate
                   }).subscribe(res4 => console.log(res4));
                 break
@@ -78,17 +78,24 @@ export class AnnouncementService {
                     "date":announcement.date,
                     "location":announcement.location,
                     "price":announcement.price,
-                    "prize":announcement.prize,
+                    "prizes":announcement.prize,
+                    "limitDate":announcement.limitDate
+                  }).subscribe(res4 => console.log(res4));
+                break
+              case "ScholarShip":
+                this._httpService.post("http://localhost:8080/scholarships",
+                  {     
+                    "id":res2.id,
+                    "requirements":announcement.requirements,
+                    "noAvailablePositions":announcement.vacantPositions,
                     "limitDate":announcement.limitDate
                   }).subscribe(res4 => console.log(res4));
                 break
               case "Other":
-                this._httpService.post("http://localhost:8080/scholarships",
+                this._httpService.post("http://localhost:8080/others",
                   {     
                     "id":res2.id,
-                    "requirments":announcement.requirements,
-                    "noAvailablePositions":announcement.vacantPositions,
-                    "limitDate":announcement.limitDate
+                    "details":announcement.details
                   }).subscribe(res4 => console.log(res4));
                 break
             }
