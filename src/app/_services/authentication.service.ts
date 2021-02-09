@@ -29,13 +29,12 @@ export class AuthenticationService {
         //         return user;
         //     }));
         console.log("A");
-        // return this.http.post<any>("http://localhost:8080/login", { "username":username, "password":password }, {observe:'response'})
-        //         .subscribe(res => console.log(res.headers.get("authorization").split(' ')[1]));
         return this.http.post<any>("http://localhost:8080/login", { "username":username, "password":password }, {observe:'response'})
                 .pipe(map(res => {
-                    console.log(res);
                     var user = new User();
                     user.token = res.headers.get("authorization").split(' ')[1];
+                    user.username = username
+                    user.password = password
                     console.log(user);
                     localStorage.setItem('currentUser', JSON.stringify(user));
                     this.currentUserSubject.next(user);

@@ -20,6 +20,7 @@
                     <mat-radio-button class="radioButton" type="radio" name="type" value="Course">Course</mat-radio-button>
                     <mat-radio-button class="radioButton" type="radio" name="type" value="Contest">Contest</mat-radio-button>
                     <mat-radio-button class="radioButton" type="radio" name="type" value="ScholarShip">Scholarship</mat-radio-button>
+                    <mat-radio-button class="radioButton" type="radio" name="type" value="Other">Other</mat-radio-button>
                     <div *ngIf="generalInfo.controls.type.value == 'Ad'">Content to render when condition is true.</div>
                     <mat-error *ngIf="generalInfo.controls.type.invalid && !generalInfo.pristine">Type is required</mat-error>
                 </mat-radio-group>
@@ -48,7 +49,7 @@
                 </mat-form-field>
             </form>
         </mat-step>
-        <mat-step [stepControl]="timeInfo">
+        <mat-step [stepControl]="timeInfo" *ngIf="generalInfo.controls.type.value != 'Other'">
             <ng-template matStepLabel>Time and Space</ng-template>
             <form [formGroup]="timeInfo">
                 <mat-form-field *ngIf="generalInfo.controls.type.value == 'Course' || generalInfo.controls.type.value == 'Internship'">
@@ -85,6 +86,10 @@
                 <mat-form-field *ngIf="generalInfo.controls.type.value == 'Contest'">
                     <mat-label>Prize:</mat-label>
                     <textarea matInput type="text" formControlName="prize"></textarea>
+                </mat-form-field>
+                <mat-form-field *ngIf="generalInfo.controls.type.value == 'Other'">
+                    <mat-label>Details:</mat-label>
+                    <textarea matInput type="text" formControlName="details"></textarea>
                 </mat-form-field>
                 <!-- <mat-form-field> -->
                     <!-- <mat-label>Tags:</mat-label> -->

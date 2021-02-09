@@ -67,6 +67,7 @@ export class EditannouncementComponent implements OnInit {
     });
     this.miscInfo = this.fb.group({
       requirements:[''],
+      details:[''],
       prize:['']
     });
     this.tagInfo = this.fb.group({

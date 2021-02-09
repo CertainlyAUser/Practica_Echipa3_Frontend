@@ -30,10 +30,69 @@ export class AnnouncementService {
       'Content-Type':'application/json',
       'Authorization': this.auth.currentUserValue.token
     });
-    this._httpService.post("http://localhost:8080/descriptions", {"text":announcement.description}, {headers:headers}).subscribe(res => 
+    this._httpService.post<any>("http://localhost:8080/descriptions", {"text":announcement.description}, {headers:headers}).subscribe(res => 
       {
-        console.log(res);
-        this._httpService.post("http://localhost:8080/",{});
+        this._httpService.post<any>("http://localhost:8080/announcements",
+          { 
+            "companyId": 3,
+            "imageId":"1129606222435976795",
+            "link":announcement.link,
+            "approvedForPublishing":false,
+            "importance":1,
+            "publishedDate":Date.now(),
+            "title":announcement.title,
+            "descriptionId":res.id,
+            "shortDescription":announcement.shortDesc 
+          }).subscribe(res2 => {
+            switch(announcement.type){
+              case "Internship":
+                this._httpService.post("http://localhost:8080/internships",
+                  {     
+                    "id":res2.id,
+                    "startDate":announcement.startDate,
+                    "requirments":announcement.requirements,
+                    "numberAvailablePositions":announcement.vacantPositions,
+                    "limitDate":announcement.limitDate
+                  }).subscribe(res4 => console.log(res4));
+                break
+              case "Job":
+                this._httpService.post("http://localhost:8080/jobs",
+                  {     
+                    "id":res2.id,
+                    "requirments":announcement.requirements,
+                    "limitDate":announcement.limitDate
+                  }).subscribe(res4 => console.log(res4));
+                break
+              case "Course":
+                this._httpService.post("http://localhost:8080/courses",
+                  {     
+                    "id":res2.id,
+                    "startDate":announcement.startDate,
+                    "limitDate":announcement.limitDate
+                  }).subscribe(res4 => console.log(res4));
+                break
+              case "Contest":
+                this._httpService.post("http://localhost:8080/contests",
+                  {     
+                    "id":res2.id,
+                    "date":announcement.date,
+                    "location":announcement.location,
+                    "price":announcement.price,
+                    "prize":announcement.prize,
+                    "limitDate":announcement.limitDate
+                  }).subscribe(res4 => console.log(res4));
+                break
+              case "Other":
+                this._httpService.post("http://localhost:8080/scholarships",
+                  {     
+                    "id":res2.id,
+                    "requirments":announcement.requirements,
+                    "noAvailablePositions":announcement.vacantPositions,
+                    "limitDate":announcement.limitDate
+                  }).subscribe(res4 => console.log(res4));
+                break
+            }
+          });
       }
     );
   }
