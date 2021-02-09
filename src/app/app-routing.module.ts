@@ -10,6 +10,7 @@ import { RegisterComponent } from './register';
 import { AuthGuard } from './_helpers';
 import { AnnouncementDetailsComponent } from './components/announcement-details/announcement-details.component';
 import { NewUsersComponent } from './components/admin/new-users/new-users.component';
+import { NewAnnouncementTableComponent } from './core/page/new-announcement-table/new-announcement-table.component';
 
 const routes: Routes = [
   {
@@ -26,6 +27,7 @@ const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'announcement-details/:id', component: AnnouncementDetailsComponent },
   { path: 'new-users', component: NewUsersComponent},
+  { path: 'new-announcement', component: NewAnnouncementTableComponent},
 
   // otherwise redirect to home
   { path: '**', redirectTo: '' }
