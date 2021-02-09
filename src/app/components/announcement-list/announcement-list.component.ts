@@ -18,11 +18,11 @@ export class AnnouncementListComponent implements OnInit {
 
   ngOnInit() {
     this.getAnnouncements();
-    this.announcementsBackup = this.announcements;
+    //this.announcementsBackup = this.announcements;
   }
 
   getAnnouncements(): void {
-    this.announcementService.getAnnouncements().subscribe(announcements => this.announcements = announcements);
+    this.announcementService.getAnnouncements().subscribe(announcements => {this.announcements = announcements, this.announcementsBackup = announcements; console.log(announcements)});
   }
 
   filter(): void {
