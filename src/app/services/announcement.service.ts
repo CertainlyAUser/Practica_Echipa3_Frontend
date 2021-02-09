@@ -17,8 +17,11 @@ export class AnnouncementService {
   // tslint:disable-next-line:variable-name
   constructor(private _httpService: HttpClient, private auth:AuthenticationService) { }
 
+  // getAnnouncements(): Observable<Announcement[]> {
+  //   return of(this.announcements);
+  // }
   getAnnouncements(): Observable<Announcement[]> {
-    return of(this.announcements);
+    return this._httpService.get<any>("http://localhost:8080/announcements");
   }
 
   getAnnouncementById(id: number): Announcement {
