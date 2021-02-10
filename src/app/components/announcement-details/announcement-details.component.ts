@@ -20,11 +20,6 @@ export class AnnouncementDetailsComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.announcement = this.getAnnouncement();
-    }
-
-    getAnnouncement(): Announcement {
-        const id = +this.route.snapshot.paramMap.get('id');
-        return this.announcementService.getAnnouncementById(id);
+        this.announcementService.getAnnouncementById(parseInt(this.route.snapshot.paramMap.get('id'))).subscribe(res => this.announcement = res);
     }
 }

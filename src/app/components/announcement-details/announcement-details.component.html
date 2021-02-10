@@ -2,7 +2,7 @@
 <div *ngIf="announcement" class="details-card">
     <p style="font-size: larger"><strong>{{announcement.title}}</strong></p>
     <p><strong>Tip: </strong>{{announcement.type}}</p>
-    <p><strong>Descriere: </strong>{{announcement.description}}</p>
+    <p><strong>Descriere: </strong>{{announcement.description.text}}</p>
     <p><strong>Aplică până la data de: </strong>{{announcement.applicationDate}}</p>
     <p><strong>Data de începere: </strong>{{announcement.beginDate}}</p>
     <p><strong>Durata: </strong>{{announcement.duration}}</p>

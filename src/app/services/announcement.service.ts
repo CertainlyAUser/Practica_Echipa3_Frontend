@@ -7,6 +7,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import * as announcementsJson from '../../../db.json';
 import { AuthenticationService } from '../_services';
 import { AnnouncementFormTemplate } from 'src/app/model/add-announcement.model'
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -26,11 +27,15 @@ export class AnnouncementService {
       'Content-Type':'application/json',
       'Authorization': this.auth.currentUserValue.token
     });
-    return this._httpService.get<any>("http://localhost:8080/announcements");
+    return this._httpService.get<any>("http://localhost:8080/announcements",{headers:headers});
   }
 
-  getAnnouncementById(id: number): Announcement {
-    return this.announcements.find(c => c.id === id);
+  getAnnouncementById(id: number): Observable<Announcement> {
+    let headers = new HttpHeaders({
+      'Content-Type':'application/json',
+      'Authorization': this.auth.currentUserValue.token
+    });
+    return this._httpService.get<Announcement[]>("http://localhost:8080/announcements",{headers:headers}).pipe(map(res => res.find(x => x.id == id)));
   }
 
   saveImager(file: File){
