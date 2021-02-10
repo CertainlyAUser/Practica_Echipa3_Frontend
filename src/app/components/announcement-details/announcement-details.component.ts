@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { AnnouncementService } from '../../services/announcement.service';
 import { User } from '../../_user_model';
 import { AuthenticationService } from '../../_services';
+import { AnnouncementFormTemplate } from 'src/app/model/add-announcement.model';
 
 @Component({
     selector: 'app-announcement-details',
@@ -13,7 +14,7 @@ import { AuthenticationService } from '../../_services';
 @Injectable({ providedIn: 'root' })
 export class AnnouncementDetailsComponent implements OnInit {
     currentUser: User;
-    announcement: Announcement;
+    announcement: AnnouncementFormTemplate;
 
     constructor(private route: ActivatedRoute, private announcementService: AnnouncementService, private authService: AuthenticationService) {
         authService.currentUser.subscribe(x => this.currentUser = x);

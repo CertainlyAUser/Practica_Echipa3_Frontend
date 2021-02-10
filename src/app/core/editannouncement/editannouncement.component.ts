@@ -2,6 +2,7 @@ import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl} from '@angular/forms'
 import { ActivatedRoute } from '@angular/router';
+import { AnnouncementService } from 'src/app/services/announcement.service';
 import { EditformService } from 'src/app/services/editform.service';
 import { TagService } from 'src/app/services/tag.service';
 import { AnnouncementFormTemplate } from '../../model/add-announcement.model';
@@ -24,25 +25,60 @@ export class EditannouncementComponent implements OnInit {
   public miscInfo : FormGroup;
   public tagInfo : FormGroup;
 
-  constructor(private fb : FormBuilder, private ts : TagService, private route:ActivatedRoute, private es:EditformService) { 
-    //this.announcement = {title:'', type:'',link:'',vacantPositions:5,prize:'',price:5,shortDesc:'',description:'',startDate:'',limitDate:'',date:'',location:'',requierments:'',tags:[]};
+  constructor(private fb : FormBuilder, private ts : TagService, private route:ActivatedRoute, private es:AnnouncementService) { 
     const aId = route.snapshot.paramMap.get('id');
     console.log(aId);
-    es.getAnnouncement(aId).subscribe( x => {
+    es.getAnnouncementById(parseInt(aId)).subscribe( x => {
       this.announcement = x;
       console.log(x);
       this.generalInfo.controls.title.setValue(x.title);
       this.generalInfo.controls.type.setValue(x.type);
       this.generalInfo.controls.link.setValue(x.link);
-      this.generalInfo.controls.vacantPositions.setValue(x.vacantPositions);
-      this.generalInfo.controls.price.setValue(x.price);
-      this.descripInfo.controls.description.setValue(x.description);
-      this.descripInfo.controls.shortDesc.setValue(x.shortDesc);
-      this.timeInfo.controls.startDate.setValue(x.startDate);
-      this.timeInfo.controls.limitDate.setValue(x.limitDate);
-      this.timeInfo.controls.date.setValue(x.date);
-      this.timeInfo.controls.location.setValue(x.location);
-      this.miscInfo.controls.requirements.setValue(x.requirements)
+      this.descripInfo.controls.description.setValue(x.description.text);
+      this.descripInfo.controls.shortDesc.setValue(x.shortDescription);
+      switch(x.type){
+        case 'internship':
+          es.getInternshipById(parseInt(aId)).subscribe(res => {
+            this.timeInfo.controls.startDate.setValue(res.startDate);
+            this.timeInfo.controls.limitDate.setValue(res.limitDate);
+            this.miscInfo.controls.requirements.setValue(res.requirments);
+            this.generalInfo.controls.vacantPositions.setValue(res.numberAvailablePositions);
+          });
+          break
+        case 'job':
+          es.getJobById(parseInt(aId)).subscribe(res => {
+            this.timeInfo.controls.limitDate.setValue(res.limitDate);
+            this.miscInfo.controls.requirements.setValue(res.requirments);
+          });
+          break
+        case 'course':
+          es.getCourseById(parseInt(aId)).subscribe(res => {
+            this.timeInfo.controls.startDate.setValue(res.startDate);
+            this.timeInfo.controls.limitDate.setValue(res.limitDate);
+          });
+          break
+        case 'contest':
+          es.getContestById(parseInt(aId)).subscribe(res => {    
+            this.generalInfo.controls.price.setValue(res.price);
+            this.timeInfo.controls.date.setValue(res.date);
+            this.timeInfo.controls.location.setValue(res.location);
+            this.timeInfo.controls.limitDate.setValue(res.limitDate);
+            this.miscInfo.controls.prize.setValue(res.prizes);
+          });
+          break
+        case 'scholarship':
+          es.getScholarshipById(parseInt(aId)).subscribe(res => {
+            this.timeInfo.controls.limitDate.setValue(res.limitDate);
+            this.miscInfo.controls.requirements.setValue(res.requirments);
+            this.generalInfo.controls.vacantPositions.setValue(res.numberAvailablePositions);
+          });
+          break
+        case 'other':
+          es.getOtherById(parseInt(aId)).subscribe(res => {
+            this.miscInfo.controls.details.setValue(res.details);
+          });
+          break
+      }
       x.tags.forEach(y => ts.addTag(y.text.toString()));
     })
     this.showModal = false;

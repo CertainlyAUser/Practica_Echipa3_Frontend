@@ -19,23 +19,37 @@ export class AnnouncementService {
   // tslint:disable-next-line:variable-name
   constructor(private _httpService: HttpClient, private auth:AuthenticationService) { }
 
-  // getAnnouncements(): Observable<Announcement[]> {
-  //   return of(this.announcements);
-  // }
   getAnnouncements(): Observable<Announcement[]> {
-    let headers = new HttpHeaders({
-      'Content-Type':'application/json',
-      'Authorization': this.auth.currentUserValue.token
-    });
-    return this._httpService.get<any>("http://localhost:8080/announcements",{headers:headers});
+      return this._httpService.get<any>("http://localhost:8080/announcements");
   }
 
-  getAnnouncementById(id: number): Observable<Announcement> {
-    let headers = new HttpHeaders({
-      'Content-Type':'application/json',
-      'Authorization': this.auth.currentUserValue.token
-    });
-    return this._httpService.get<Announcement[]>("http://localhost:8080/announcements",{headers:headers}).pipe(map(res => res.find(x => x.id == id)));
+  getAnnouncementById(id: number): Observable<any> {
+    //return this._httpService.get<Announcement[]>("http://localhost:8080/announcements/"+id).pipe(map(res => res.find(x => x.id == id)));
+    return this._httpService.get<any>("http://localhost:8080/announcements/"+id);
+  }
+
+  getScholarshipById(id: number): Observable<any> {
+    return this._httpService.get<any>("http://localhost:8080/scholarships/"+id);
+  }
+  
+  getContestById(id: number): Observable<any> {
+    return this._httpService.get<any>("http://localhost:8080/contests/"+id);
+  }
+  
+  getCourseById(id: number): Observable<any> {
+    return this._httpService.get<any>("http://localhost:8080/courses/"+id);
+  }
+  
+  getInternshipById(id: number): Observable<any> {
+    return this._httpService.get<any>("http://localhost:8080/internships/"+id);
+  }
+ 
+  getOtherById(id: number): Observable<any> {
+    return this._httpService.get<any>("http://localhost:8080/others/"+id);
+  } 
+
+  getJobById(id: number): Observable<any> {
+    return this._httpService.get<any>("http://localhost:8080/jobs/"+id);
   }
 
   saveImager(file: File){
