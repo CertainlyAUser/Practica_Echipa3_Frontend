@@ -25,10 +25,6 @@ export class NewAnnouncementTableComponent implements OnInit {
 
   approveAnnouncment(id: number){
     this.ann.approveAnnouncment(id).subscribe(res => this.ann.getAnnouncements().subscribe(res => {this.dataSource = res.filter(x => x.approvedForPublishing!=true);console.log(res)}));
-    //this.dataSource = null;
-    //this.ann.getAnnouncements().subscribe(res => {this.dataSource = res.filter(x => x.approvedForPublishing!=true);console.log(res)});
-    //console.log(this.dataSource.splice(this.dataSource.indexOf(this.dataSource.find(x => x.id == id)), 1));
-    //console.log(this.dataSource);
   }
 
 }
