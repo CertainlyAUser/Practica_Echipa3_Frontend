@@ -18,12 +18,14 @@ import { AnnouncementFormTemplate } from '../../model/add-announcement.model';
 export class EditannouncementComponent implements OnInit {
 
   private announcement: AnnouncementFormTemplate;
+  private curentImage : File;
   private showModal : boolean;
   public generalInfo : FormGroup;
   public descripInfo : FormGroup;
   public timeInfo : FormGroup;
   public miscInfo : FormGroup;
   public tagInfo : FormGroup;
+  public imageInfo : FormGroup;
 
   constructor(private fb : FormBuilder, private ts : TagService, private route:ActivatedRoute, private es:AnnouncementService) { 
     const aId = route.snapshot.paramMap.get('id');
@@ -110,6 +112,9 @@ export class EditannouncementComponent implements OnInit {
     this.tagInfo = this.fb.group({
       tags:['']
     });
+    this.imageInfo = this.fb.group({
+      image:['']
+    });
 
     this.generalInfo.controls.type.valueChanges.subscribe(value => {
       if(value == "Contest")
@@ -154,5 +159,10 @@ export class EditannouncementComponent implements OnInit {
       this.ts.clear();
     }
     console.log(this.announcement);
+    this.generalInfo.controls.title.valueChanges.subscribe(res => console.log("BBB"));
   }
+
+  onImageChange(event){
+    this.curentImage = event.target.files.item(0);
+}
 }

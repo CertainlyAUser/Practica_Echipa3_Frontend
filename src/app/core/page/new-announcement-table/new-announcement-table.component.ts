@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MatTableDataSource } from '@angular/material';
 import { Router } from '@angular/router';
 import { AnnouncementService } from 'src/app/services/announcement.service';
 
@@ -15,11 +16,19 @@ export class NewAnnouncementTableComponent implements OnInit {
   constructor(private ann : AnnouncementService, private router: Router) { }
 
   ngOnInit() {
-    this.ann.getAnnouncements().subscribe(res => this.dataSource = res);
+    this.ann.getAnnouncements().subscribe(res => this.dataSource = new MatTableDataSource(res.filter(x => x.approvedForPublishing!=true)));
   }
 
-  navToPage(id){
+  navToPage(id: number){
     this.router.navigate(['/announcement-details/'+id]);
+  }
+
+  approveAnnouncment(id: number){
+    this.ann.approveAnnouncment(id).subscribe(res => this.ann.getAnnouncements().subscribe(res => {this.dataSource = res.filter(x => x.approvedForPublishing!=true);console.log(res)}));
+    //this.dataSource = null;
+    //this.ann.getAnnouncements().subscribe(res => {this.dataSource = res.filter(x => x.approvedForPublishing!=true);console.log(res)});
+    //console.log(this.dataSource.splice(this.dataSource.indexOf(this.dataSource.find(x => x.id == id)), 1));
+    //console.log(this.dataSource);
   }
 
 }

@@ -14,4 +14,5 @@ export class Announcement {
     public importance: number;
     public user: User;
     public tags: any;
+    public approvedForPublishing: boolean;
 }

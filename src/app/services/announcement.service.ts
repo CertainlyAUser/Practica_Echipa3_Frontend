@@ -52,6 +52,14 @@ export class AnnouncementService {
     return this._httpService.get<any>("http://localhost:8080/jobs/"+id);
   }
 
+  approveAnnouncment(id: number){
+    let headers = new HttpHeaders({
+      'Content-Type':'application/json',
+      'Authorization': this.auth.currentUserValue.token
+    });
+    return this._httpService.post<any>("http://localhost:8080/announcements/approve/"+id,{},{headers:headers})
+  }
+
   saveImager(file: File){
     var formData = new FormData();
     formData.append("announcement", file)
