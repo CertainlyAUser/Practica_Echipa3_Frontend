@@ -48,7 +48,7 @@ export class EditannouncementComponent implements OnInit {
         case 'job':
           es.getJobById(parseInt(aId)).subscribe(res => {
             this.timeInfo.controls.limitDate.setValue(res.limitDate);
-            this.miscInfo.controls.requirements.setValue(res.requirments);
+            this.miscInfo.controls.requirements.setValue(res.requirements);
           });
           break
         case 'course':
@@ -69,7 +69,7 @@ export class EditannouncementComponent implements OnInit {
         case 'scholarship':
           es.getScholarshipById(parseInt(aId)).subscribe(res => {
             this.timeInfo.controls.limitDate.setValue(res.limitDate);
-            this.miscInfo.controls.requirements.setValue(res.requirments);
+            this.miscInfo.controls.requirements.setValue(res.requirements);
             this.generalInfo.controls.vacantPositions.setValue(res.numberAvailablePositions);
           });
           break
