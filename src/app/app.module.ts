@@ -23,8 +23,7 @@ import { AnnouncementListComponent } from './components/announcement-list/announ
 import { UserAnnouncementListComponent } from './components/user-announcement-list/user-announcement-list.component';
 import { AnnouncementComponent } from './components/announcement/announcement.component';
 import { AnnouncementDetailsComponent } from './components/announcement-details/announcement-details.component';
-import { NewUsersComponent } from './components/admin/new-users/new-users.component';
-import { UserComponent } from './components/admin/new-users/user/user.component';
+import { UserComponent } from './components/user/user.component';
 
 // @ts-ignore
 // @ts-ignore
@@ -40,7 +39,6 @@ import { UserComponent } from './components/admin/new-users/user/user.component'
     AnnouncementComponent,
     LandingPageComponent,
     AnnouncementDetailsComponent,
-    NewUsersComponent,
     UserComponent
   ],
   imports: [

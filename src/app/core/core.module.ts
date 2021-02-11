@@ -6,12 +6,14 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '../shared/shared.module';
 import { EditannouncementComponent } from './editannouncement/editannouncement.component';
 import { NewAnnouncementTableComponent } from './page/new-announcement-table/new-announcement-table.component';
+import { NewUserTableComponent } from './page/new-user-table/new-user-table.component';
 
 @NgModule({
   declarations: [
     AnnouncementFormComponent,
     EditannouncementComponent,
-    NewAnnouncementTableComponent
+    NewAnnouncementTableComponent,
+    NewUserTableComponent
   ],
   imports: [
     CommonModule,
