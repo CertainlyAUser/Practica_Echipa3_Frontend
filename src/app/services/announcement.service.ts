@@ -75,6 +75,88 @@ export class AnnouncementService {
     return Promise.all(iter);
   }
 
+  updateAnnouncement(announcement : AnnouncementFormTemplate, others: any, file: File){
+    let headers = new HttpHeaders({
+      'Content-Type':'application/json',
+      'Authorization': this.auth.currentUserValue.token
+    });
+    this.postTags(announcement.tags).then((val) =>{
+      let tid = [];
+      val.forEach(tagInList => tid.push(tagInList.id));
+      this._httpService.post<any>("http://localhost:8080/descriptions/update",{id:others.description.id, text:announcement.description}).subscribe( res => {
+        this._httpService.post<any>("http://localhost:8080/announcements/update",
+        {
+          "companyId": 3,
+          "imageId":others.image.imageId,
+          "link":announcement.link,
+          "approvedForPublishing":others.approvedForPublishing,
+          "importance":1,
+          "publishedDate":others.publishedDate,
+          "title":announcement.title,
+          "descriptionId":res.id,
+          "tags": tid,
+          "shortDescription":announcement.shortDesc
+        }).subscribe(res => {
+          switch(announcement.type){
+            case "Internship":
+              this._httpService.post("http://localhost:8080/internships/update",
+                {     
+                  "id":others.id,
+                  "startDate":announcement.startDate,
+                  "requirments":announcement.requirements,
+                  "numberAvailablePositions":announcement.vacantPositions,
+                  "limitDate":announcement.limitDate
+                }).subscribe(res4 => console.log(res4));
+              break
+            case "Job":
+              this._httpService.post("http://localhost:8080/jobs/update",
+                {     
+                  "id":others.id,
+                  "requirements":announcement.requirements,
+                  "limitDate":announcement.limitDate
+                }).subscribe(res4 => console.log(res4));
+              break
+            case "Course":
+              this._httpService.post("http://localhost:8080/courses/update",
+                {     
+                  "id":others.id,
+                  "startDate":announcement.startDate,
+                  "limitDate":announcement.limitDate
+                }).subscribe(res4 => console.log(res4));
+              break
+            case "Contest":
+              this._httpService.post("http://localhost:8080/contests/update",
+                {     
+                  "id":others.id,
+                  "date":announcement.date,
+                  "location":announcement.location,
+                  "price":announcement.price,
+                  "prizes":announcement.prize,
+                  "limitDate":announcement.limitDate
+                }).subscribe(res4 => console.log(res4));
+              break
+            case "ScholarShip":
+              this._httpService.post("http://localhost:8080/scholarships/update",
+                {     
+                  "id":others.id,
+                  "requirements":announcement.requirements,
+                  "noAvailablePositions":announcement.vacantPositions,
+                  "limitDate":announcement.limitDate
+                }).subscribe(res4 => console.log(res4));
+              break
+            case "Other":
+              this._httpService.post("http://localhost:8080/others/update",
+                {     
+                  "id":others.id,
+                  "details":announcement.details
+                }).subscribe(res4 => console.log(res4));
+              break
+          }
+        });
+      });
+    });
+  }
+
   postAnnouncement(announcement : AnnouncementFormTemplate, file: File){
     let headers = new HttpHeaders({
       'Content-Type':'application/json',

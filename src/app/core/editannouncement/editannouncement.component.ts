@@ -18,6 +18,7 @@ import { AnnouncementFormTemplate } from '../../model/add-announcement.model';
 export class EditannouncementComponent implements OnInit {
 
   private announcement: AnnouncementFormTemplate;
+  private announcementBackup: any;
   private curentImage : File;
   private showModal : boolean;
   public generalInfo : FormGroup;
@@ -28,10 +29,12 @@ export class EditannouncementComponent implements OnInit {
   public imageInfo : FormGroup;
 
   constructor(private fb : FormBuilder, private ts : TagService, private route:ActivatedRoute, private es:AnnouncementService) { 
+    ts.clear();
     const aId = route.snapshot.paramMap.get('id');
     console.log(aId);
     es.getAnnouncementById(parseInt(aId)).subscribe( x => {
       this.announcement = x;
+      this.announcementBackup = x;
       console.log(x);
       this.generalInfo.controls.title.setValue(x.title);
       this.generalInfo.controls.type.setValue(x.type);
@@ -72,7 +75,7 @@ export class EditannouncementComponent implements OnInit {
           es.getScholarshipById(parseInt(aId)).subscribe(res => {
             this.timeInfo.controls.limitDate.setValue(res.limitDate);
             this.miscInfo.controls.requirements.setValue(res.requirements);
-            this.generalInfo.controls.vacantPositions.setValue(res.numberAvailablePositions);
+            this.generalInfo.controls.vacantPositions.setValue(res.noAvailablePositions);
           });
           break
         case 'other':
@@ -156,6 +159,7 @@ export class EditannouncementComponent implements OnInit {
       this.announcement.requirements = this.miscInfo.controls.requirements.value;
       this.announcement.details = this.miscInfo.controls.details.value;
       this.announcement.tags = this.ts.getTags();
+      this.es.updateAnnouncement(this.announcement, this.announcementBackup, this.curentImage)
       this.ts.clear();
     }
     console.log(this.announcement);
