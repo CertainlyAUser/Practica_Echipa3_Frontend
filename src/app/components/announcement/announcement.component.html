@@ -3,7 +3,7 @@
     <a routerLink="/announcement-details/{{announcement.id}}"><h1 class="card__ann__title">{{announcement.title}}</h1></a>
     <p class="card__ann__description">{{announcement.description.text}}</p>
   </div>
-  <div *ngIf="currentUser.role === '[ADMIN_PRIVILEGE]'">
+  <div *ngIf="currentUser != null && currentUser.role === '[ADMIN_PRIVILEGE]'">
     <button (click)="pin()" *ngIf="currentUser.role === '[ADMIN_PRIVILEGE]' && announcement.pinned != true">Pin this</button>
     <button (click)="unpin()" *ngIf="currentUser.role === '[ADMIN_PRIVILEGE]' && announcement.pinned == true">Unpin this</button>
   </div>
