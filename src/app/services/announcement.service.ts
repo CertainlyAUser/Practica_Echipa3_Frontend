@@ -86,6 +86,7 @@ export class AnnouncementService {
       this._httpService.post<any>("http://localhost:8080/descriptions/update",{id:others.description.id, text:announcement.description}).subscribe( res => {
         this._httpService.post<any>("http://localhost:8080/announcements/update",
         {
+          "id":others.id,
           "companyId": 3,
           "imageId":others.image.imageId,
           "link":announcement.link,
