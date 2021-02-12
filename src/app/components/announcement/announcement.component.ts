@@ -21,12 +21,12 @@ export class AnnouncementComponent implements OnInit {
   }
 
   pin() {
-    this.announcementService.pinAnnouncement(this.announcement.id);
+    this.announcementService.pinAnnouncement(this.announcement.id).subscribe();
     this.announcement.pinned = true;
   }
 
   unpin() {
-    this.announcementService.unpinAnnouncement(this.announcement.id);
+    this.announcementService.unpinAnnouncement(this.announcement.id).subscribe();
     this.announcement.pinned = false;
   }
 }

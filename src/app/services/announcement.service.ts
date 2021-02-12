@@ -65,7 +65,7 @@ export class AnnouncementService {
       'Content-Type':'application/json',
       'Authorization': this.auth.currentUserValue.token
     });
-    return this._httpService.post("http://localhost:8080/announcements/pin/" + id, {}, {headers: headers})
+    return this._httpService.post<any>("http://localhost:8080/announcements/pin/" + id, {}, {headers: headers})
   }
 
   unpinAnnouncement(id: number) {
@@ -73,7 +73,7 @@ export class AnnouncementService {
       'Content-Type':'application/json',
       'Authorization': this.auth.currentUserValue.token
     });
-    return this._httpService.post("http://localhost:8080/announcements/unpin/" + id, {}, {headers: headers})
+    return this._httpService.post<any>("http://localhost:8080/announcements/unpin/" + id, {}, {headers: headers})
   }
 
   saveImager(file: File){
