@@ -13,7 +13,7 @@
                     <mat-label>Link:</mat-label>
                     <input matInput type="text" formControlName="link">
                 </mat-form-field>
-                <mat-label>Type:</mat-label>
+                <mat-label [hidden]="true">Type:</mat-label>
                 <mat-radio-group class="radioButtons" formControlName="type" [hidden]="true">
                     <mat-radio-button class="radioButton" type="radio" name="type" value="internship">Internship</mat-radio-button>
                     <mat-radio-button class="radioButton" type="radio" name="type" value="job">Job</mat-radio-button>
