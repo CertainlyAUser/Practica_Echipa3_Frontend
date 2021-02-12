@@ -23,6 +23,15 @@ export class AnnouncementService {
       return this._httpService.get<any>("http://localhost:8080/announcements");
   }
 
+  getAnnouncementsApproved(): Observable<Announcement[]> {
+    return this._httpService.get<any>("http://localhost:8080/announcements/approved");
+  }
+  
+  getAnnouncementsByUser(id:number): Observable<Announcement[]> {
+    return this._httpService.get<any>("http://localhost:8080/announcements/bycompany/id/"+id);
+  }
+
+
   getAnnouncementById(id: number): Observable<any> {
     //return this._httpService.get<Announcement[]>("http://localhost:8080/announcements/"+id).pipe(map(res => res.find(x => x.id == id)));
     return this._httpService.get<any>("http://localhost:8080/announcements/"+id);

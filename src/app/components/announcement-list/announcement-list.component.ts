@@ -22,7 +22,7 @@ export class AnnouncementListComponent implements OnInit {
   }
 
   getAnnouncements(): void {
-    this.announcementService.getAnnouncements().subscribe(announcements => {this.announcements = announcements, this.announcementsBackup = announcements; console.log(announcements)});
+    this.announcementService.getAnnouncementsApproved().subscribe(announcements => {this.announcements = announcements, this.announcementsBackup = announcements; console.log(announcements)});
   }
 
   filter(): void {
