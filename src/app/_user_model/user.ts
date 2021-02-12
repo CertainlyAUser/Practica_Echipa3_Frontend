@@ -6,4 +6,6 @@ export class User {
     telNumber: string;
     email: string;
     token: string;
+    approved: boolean;
+    role?: string;
 }

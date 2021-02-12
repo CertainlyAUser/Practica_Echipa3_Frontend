@@ -26,8 +26,11 @@ export class AuthenticationService {
                 .pipe(map(res => {
                     var user = new User();
                     user.token = res.headers.get("authorization").split(' ')[1];
-                    user.username = username
-                    user.password = password
+                    user.role = res.headers.get("Role");
+                    console.log(user.role);
+
+                    user.username = username;
+                    user.password = password;
                     console.log(user);
                     localStorage.setItem('currentUser', JSON.stringify(user));
                     this.currentUserSubject.next(user);

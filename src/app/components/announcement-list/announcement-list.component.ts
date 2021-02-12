@@ -37,7 +37,7 @@ export class AnnouncementListComponent implements OnInit {
     }
     if (this.type)
     {
-      filteredByType = this.announcements.filter(an => an.type == this.type)
+      filteredByType = this.announcements.filter(an => an.type.toUpperCase() == this.type.toUpperCase())
       this.announcements = filteredByType
     }
   }

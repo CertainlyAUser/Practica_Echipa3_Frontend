@@ -1,14 +1,14 @@
 <!-- nav -->
 <nav class="navbar navbar-expand navbar-dark bg-dark" *ngIf="currentUser">
   <div class="navbar-nav">
-    <a class="nav-item nav-link" routerLink=""><i class="fa fa-plus-square"></i> Adauga anunt</a>
+    <a class="nav-item nav-link" routerLink="/add"><i class="fa fa-plus-square"></i> Adauga anunt</a>
     <a *ngIf="!(toggle()===1)" class="nav-item nav-link" routerLink="/landing-page">Anunturi</a>
     <a *ngIf="!(toggle()===0)" class="nav-item nav-link" routerLink="/home">Anunturile tale</a>
-    <div class="dropdown">
+    <div class="dropdown" *ngIf="currentUser.role === '[ADMIN_PRIVILEGE]'">
       <button class="dropbtn">Nou</button>
       <div class="dropdown-content">
-        <a class="nav-item nav-link" routerLink="">Anunturi noi</a>
-        <a class="nav-item nav-link" routerLink="">Utilizatori noi</a>
+        <a class="nav-item nav-link" routerLink="/new-announcement">Anunturi noi</a>
+        <a class="nav-item nav-link" routerLink="/new-users">Utilizatori noi</a>
       </div>
     </div>
     <a class="nav-item nav-link" (click)="logout()">Logout</a>
