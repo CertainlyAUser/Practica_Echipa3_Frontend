@@ -2,6 +2,7 @@ import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
 import { registerLocaleData } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl} from '@angular/forms'
+import { Router } from '@angular/router';
 import { AnnouncementService } from 'src/app/services/announcement.service';
 import { TagService } from 'src/app/services/tag.service';
 import { AnnouncementFormTemplate } from '../../../model/add-announcement.model';
@@ -29,7 +30,7 @@ export class AnnouncementFormComponent implements OnInit {
   public tagInfo : FormGroup;
   public imageInfo : FormGroup;
 
-  constructor(private fb : FormBuilder, private ts : TagService, private ann : AnnouncementService) { }
+  constructor(private fb : FormBuilder, private ts : TagService, private ann : AnnouncementService, private router:Router) { }
 
   ngOnInit() {
     /*this.announcForm = this.fb.group({
@@ -119,6 +120,7 @@ export class AnnouncementFormComponent implements OnInit {
       this.ann.postTags(this.ts.getTags());
       this.ts.clear();
       this.ann.postAnnouncement(this.announcement, this.curentImage);
+      this.router.navigate(["/"])
     }
     console.log(this.announcement);
   }

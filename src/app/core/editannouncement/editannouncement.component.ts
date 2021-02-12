@@ -1,7 +1,7 @@
 import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl} from '@angular/forms'
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AnnouncementService } from 'src/app/services/announcement.service';
 import { EditformService } from 'src/app/services/editform.service';
 import { TagService } from 'src/app/services/tag.service';
@@ -28,7 +28,7 @@ export class EditannouncementComponent implements OnInit {
   public tagInfo : FormGroup;
   public imageInfo : FormGroup;
 
-  constructor(private fb : FormBuilder, private ts : TagService, private route:ActivatedRoute, private es:AnnouncementService) { 
+  constructor(private fb : FormBuilder, private ts : TagService, private route:ActivatedRoute, private es:AnnouncementService, private router: Router) { 
     ts.clear();
     const aId = route.snapshot.paramMap.get('id');
     console.log(aId);
@@ -161,6 +161,7 @@ export class EditannouncementComponent implements OnInit {
       this.announcement.tags = this.ts.getTags();
       this.es.updateAnnouncement(this.announcement, this.announcementBackup, this.curentImage)
       this.ts.clear();
+      this.router.navigate(["/"])
     }
     console.log(this.announcement);
     this.generalInfo.controls.title.valueChanges.subscribe(res => console.log("BBB"));
