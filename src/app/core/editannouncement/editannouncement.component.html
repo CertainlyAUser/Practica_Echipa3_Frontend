@@ -101,7 +101,7 @@
                 <!-- </mat-form-field> -->
             </form>
             <app-tag-list></app-tag-list>
-            <button mat-button (click)="createAnnouncement()">Submit</button>
+            <button mat-button (click)="createAnnouncement()" [disabled]="generalInfo.invalid || descripInfo.invalid || miscInfo.invalid || timeInfo.invalid || imageInfo.invalid">Submit</button>
         </mat-step>
     </mat-horizontal-stepper>
     </mat-card>
