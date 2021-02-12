@@ -4,13 +4,14 @@
     <a class="nav-item nav-link" routerLink="/add"><i class="fa fa-plus-square"></i> Adauga anunt</a>
     <a *ngIf="!(toggle()===1)" class="nav-item nav-link" routerLink="/landing-page">Anunturi</a>
     <a *ngIf="!(toggle()===0)" class="nav-item nav-link" routerLink="/home">Anunturile tale</a>
-    <div class="dropdown" *ngIf="currentUser.role === '[ADMIN_PRIVILEGE]'">
+    <a class="nav-item nav-link" routerLink="/new-announcement" *ngIf="currentUser.role === '[ADMIN_PRIVILEGE]'">Anunturi noi</a>
+    <!-- <div class="dropdown" *ngIf="currentUser.role === '[ADMIN_PRIVILEGE]'">
       <button class="dropbtn">Nou</button>
       <div class="dropdown-content">
         <a class="nav-item nav-link" routerLink="/new-announcement">Anunturi noi</a>
         <a class="nav-item nav-link" routerLink="/new-users">Utilizatori noi</a>
       </div>
-    </div>
+    </div> -->
     <a class="nav-item nav-link" (click)="logout()">Logout</a>
   </div>
 </nav>
