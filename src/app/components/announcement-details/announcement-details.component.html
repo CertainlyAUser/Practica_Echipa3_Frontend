@@ -9,6 +9,7 @@
     <p><strong>Poziții libere: </strong>{{announcement.vacantPositions}}</p>
     <a *ngIf="!currentUser" href="{{announcement.link}}">Aplica aici!</a>
     <a *ngIf="currentUser" routerLink="/edit/{{announcementId}}">Edit</a>
+    <img src="{{announcement.image.imageUrl}}">
 </div>
 <div *ngIf="!announcement">
     <p>Announcement not found</p>
