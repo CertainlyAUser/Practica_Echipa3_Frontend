@@ -29,7 +29,7 @@ export class UserAnnouncementListComponent implements OnInit {
   }
   
   getAnnouncements(): void {
-    this.announcementService.getAnnouncementsByUser(3).subscribe(announcements => this.announcements = announcements);
+    this.announcementService.getCompanyId().subscribe(id => this.announcementService.getAnnouncementsByUser(id).subscribe(announcements => this.announcements = announcements));
   }
 
   filterForUser(): void {
