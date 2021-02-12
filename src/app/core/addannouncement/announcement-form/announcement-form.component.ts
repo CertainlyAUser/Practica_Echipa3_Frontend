@@ -116,6 +116,7 @@ export class AnnouncementFormComponent implements OnInit {
       this.announcement.requirements = this.miscInfo.controls.requirements.value;
       this.announcement.details = this.miscInfo.controls.details.value;
       this.announcement.tags = this.ts.getTags();
+      this.ann.postTags(this.ts.getTags());
       this.ts.clear();
       this.ann.postAnnouncement(this.announcement, this.curentImage);
     }

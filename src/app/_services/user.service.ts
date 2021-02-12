@@ -13,7 +13,14 @@ export class UserService {
     }
 
     register(user: User) {
-        return this.http.post("http://localhost:8080/users/sign-up", {"username":user.username, "password":user.password});
+        return this.http.post("http://localhost:8080/users/sign-up", 
+        {   "username":user.username, 
+            "password":user.password,
+            "name":user.companyName,
+            "telephone":user.telNumber,
+            "email":user.email,
+            "is_gold":false
+        });
     }
 
     delete(id: number) {
