@@ -19,6 +19,30 @@ export class AnnouncementService {
   // tslint:disable-next-line:variable-name
   constructor(private _httpService: HttpClient, private auth:AuthenticationService) { }
 
+  goldIt(id: number){
+    let headers = new HttpHeaders({
+      'Content-Type':'application/json',
+      'Authorization': this.auth.currentUserValue.token
+    });
+    return this._httpService.post<any>("http://localhost:8080/companies/goldit/"+id, {}, {headers:headers});
+  }
+
+  ungoldIt(id: number){
+    let headers = new HttpHeaders({
+      'Content-Type':'application/json',
+      'Authorization': this.auth.currentUserValue.token
+    });
+    return this._httpService.post<any>("http://localhost:8080/companies/ungoldit/"+id, {}, {headers:headers});
+  }
+
+  getCompanyies(){
+    let headers = new HttpHeaders({
+      'Content-Type':'application/json',
+      'Authorization': this.auth.currentUserValue.token
+    });
+    return this._httpService.get<any>("http://localhost:8080/companies", {headers:headers});
+  }
+
   getCompanyId(){
     let headers = new HttpHeaders({
       'Content-Type':'application/json',

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material';
 import { Router } from '@angular/router';
+import { AnnouncementService } from 'src/app/services/announcement.service';
 import { UserService } from 'src/app/_services';
 
 @Component({
@@ -10,16 +11,20 @@ import { UserService } from 'src/app/_services';
 })
 export class NewUserTableComponent implements OnInit {
 
-  displayedColumns: string[] = ['username', 'company'];
+  displayedColumns: string[] = ['name', 'action'];
   dataSource = null;
 
-  constructor(private userService: UserService, private router: Router) { }
+  constructor(private ann: AnnouncementService, private router: Router) { }
 
   ngOnInit() {
-    this.userService.getAll().subscribe(res => this.dataSource = new MatTableDataSource(res.filter(x => x.approved != true)));
+    this.ann.getCompanyies().subscribe( res => this.dataSource = new MatTableDataSource(res) );
   }
 
-  approveUser(id: number){
-    this.userService.approve(id).subscribe(res => this.userService.getAll().subscribe(res => {this.dataSource = res.filter(x => x.approved != true);console.log(res)}));
+  goldIt(id){
+    this.ann.goldIt(id).subscribe( res => {this.ann.getCompanyies().subscribe( res => this.dataSource = new MatTableDataSource(res) );} );
+  }
+
+  ungoldIt(id){
+    this.ann.ungoldIt(id).subscribe( res => {this.ann.getCompanyies().subscribe( res => this.dataSource = new MatTableDataSource(res) );} );
   }
 }
