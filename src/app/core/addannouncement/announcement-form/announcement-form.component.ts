@@ -20,7 +20,7 @@ import { TagComponent } from '../../../shared/tag/tag.component';
 export class AnnouncementFormComponent implements OnInit {
 
   //public announcForm : FormGroup;
-  private curentImage : File;
+  private currentImage : File;
   private announcement: AnnouncementFormTemplate;
   private showModal : boolean;
   public generalInfo : FormGroup;
@@ -45,7 +45,7 @@ export class AnnouncementFormComponent implements OnInit {
       'tags':[''],
     });*/
     this.ts.clear();
-    this.announcement = {title:'', type:'',link:'',vacantPositions:5,prize:'',price:5,shortDesc:'',description:'',startDate:'',limitDate:'',date:'',location:'',requirements:'',details:'',tags:[]};
+    this.announcement = {title:'', type:'',link:'',vacantPositions:5,prize:'',price:5,shortDesc:'',description:'',startDate:'',limitDate:'',date:'',location:'',requirements:'',details:'',tags:[], image:''};
     this.showModal = false;
     this.generalInfo = this.fb.group({
       //title:[null, Validators.required],
@@ -117,15 +117,16 @@ export class AnnouncementFormComponent implements OnInit {
       this.announcement.requirements = this.miscInfo.controls.requirements.value;
       this.announcement.details = this.miscInfo.controls.details.value;
       this.announcement.tags = this.ts.getTags();
+     
       this.ann.postTags(this.ts.getTags());
       this.ts.clear();
-      this.ann.postAnnouncement(this.announcement, this.curentImage);
+      this.ann.postAnnouncement(this.announcement, this.currentImage);
       this.router.navigate(["/"])
     }
     console.log(this.announcement);
   }
   
   onImageChange(event){
-      this.curentImage = event.target.files.item(0);
+      this.currentImage = event.target.files.item(0);
   }
 }

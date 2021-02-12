@@ -17,4 +17,5 @@ export interface AnnouncementFormTemplate{
     requirements: string
     details: string
     tags: Tag[]
+    image: string
 }
