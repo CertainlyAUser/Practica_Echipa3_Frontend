@@ -31,6 +31,7 @@ export class AuthenticationService {
 
                     user.username = username;
                     user.password = password;
+
                     console.log(user);
                     localStorage.setItem('currentUser', JSON.stringify(user));
                     this.currentUserSubject.next(user);
