@@ -5,6 +5,7 @@
     <a *ngIf="!(toggle()===1)" class="nav-item nav-link" routerLink="/landing-page">Anunturi</a>
     <a *ngIf="!(toggle()===0)" class="nav-item nav-link" routerLink="/home">Anunturile tale</a>
     <!-- <a class="nav-item nav-link" routerLink="/new-announcement" *ngIf="currentUser.role === '[ADMIN_PRIVILEGE]'">Anunturi noi</a> -->
+    <!-- keeping dev alive -->
     <div class="dropdown" *ngIf="currentUser.role === '[ADMIN_PRIVILEGE]'">
       <button class="dropbtn">Nou</button>
       <div class="dropdown-content">
