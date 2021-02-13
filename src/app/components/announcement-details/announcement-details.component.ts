@@ -26,7 +26,8 @@ export class AnnouncementDetailsComponent implements OnInit {
 
     ngOnInit() {
         this.announcementId = parseInt(this.route.snapshot.paramMap.get('id'));
-        this.announcementService.getCompanyId().subscribe(resId => {this.compid = resId});
+        if(this.currentUser != null)
+            this.announcementService.getCompanyId().subscribe(resId => {this.compid = resId});
         this.announcementService.getAnnouncementById(this.announcementId).subscribe(res => {this.announcement = res;
             switch(this.announcement.type){
                 case "internship":
