@@ -1,18 +1,17 @@
 <div *ngIf="announcement" class="details-card">
     <p style="font-size: larger"><strong>{{announcement.title}}</strong></p>
-    <img src="{{announcement.image}}" alt="image">
     <p><strong>Tip: </strong>{{announcement.type}}</p>
-    <p><strong>Introducere: </strong>{{announcement.shortDesc.text}}</p>
+    <p><strong>Introducere: </strong>{{announcement.shortDescription}}</p>
     <p><strong>Descriere: </strong>{{announcement.description.text}}</p>
-    <p><strong>Aplică până la data de: </strong>{{announcement.limitDate}}</p>
-    <p><strong>Data de începere: </strong>{{announcement.startDate}}</p>
-    <p><strong>Durata: </strong>{{announcement.date}}</p>
-    <p><strong>Preț: </strong>{{announcement.price}}</p>
-    <p><strong>Premii: </strong>{{announcement.prize}}</p>
-    <p><strong>Locație: </strong>{{announcement.location}}</p>
-    <p><strong>Cerințe: </strong>{{announcement.requirements}}</p>
-    <p><strong>Detalii: </strong>{{announcement.details}}</p>
-    <p><strong>Poziții libere: </strong>{{announcement.vacantPositions}}</p>
+    <p><strong>Aplică până la data de: </strong>{{other.limitDate}}</p>
+    <p><strong>Data de începere: </strong>{{other.startDate}}</p>
+    <p><strong>Durata: </strong>{{other.date}}</p>
+    <p><strong>Preț: </strong>{{other.price}}</p>
+    <p><strong>Premii: </strong>{{other.prize}}</p>
+    <p><strong>Locație: </strong>{{other.location}}</p>
+    <p><strong>Cerințe: </strong>{{other.requirements}}</p>
+    <p><strong>Detalii: </strong>{{other.details}}</p>
+    <p><strong>Poziții libere: </strong>{{other.numberAvailablePositions}}</p>
     <a *ngIf="!currentUser" href="{{announcement.link}}">Aplica aici!</a>
     <p><strong>Tag-uri: </strong>{{announcement.tags}}</p>
     <a *ngIf="currentUser" routerLink="/edit/{{announcementId}}">Edit</a>
