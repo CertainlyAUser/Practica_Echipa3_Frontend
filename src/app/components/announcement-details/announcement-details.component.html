@@ -14,7 +14,7 @@
     <p><strong>Poziții libere: </strong>{{other.numberAvailablePositions}}</p>
     <a *ngIf="!currentUser" href="{{announcement.link}}">Aplica aici!</a>
     <p><strong>Tag-uri: </strong>{{announcement.tags}}</p>
-    <a *ngIf="currentUser" routerLink="/edit/{{announcementId}}">Edit</a>
+    <a *ngIf="currentUser && compid==announcement.companyId" routerLink="/edit/{{announcementId}}">Edit</a>
     <img src="{{announcement.image.imageUrl}}">
 </div>
 <div *ngIf="!announcement">
