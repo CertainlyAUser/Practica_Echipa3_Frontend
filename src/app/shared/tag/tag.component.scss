@@ -1,0 +1,20 @@
+.tagBackground{
+    display: flex;
+    flex-direction: row;
+    background-color: gainsboro;
+    border-radius: 5em;
+    width: fit-content;
+    height: auto;
+}
+p{
+    text-align: center;
+    padding: 10px;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+.iconStyle{
+    margin-top: auto;
+    margin-bottom: auto;
+    padding-right: 8px;
+    font-size: 15px;
+}

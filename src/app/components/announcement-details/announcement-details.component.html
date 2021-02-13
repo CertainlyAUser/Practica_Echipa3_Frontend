@@ -1,0 +1,25 @@
+<div *ngIf="announcement" class="details-card">
+    <p style="font-size: larger"><strong>{{announcement.title}}</strong></p>
+    <p><strong>Tip: </strong>{{announcement.type}}</p>
+    <p><strong>Introducere: </strong>{{announcement.shortDescription}}</p>
+    <p><strong>Descriere: </strong>{{announcement.description.text}}</p>
+    <p *ngIf="announcement.type=='internship' || announcement.type=='course' || announcement.type=='contest' || announcement.type=='job' || announcement.type=='scholarship'"><strong>Aplică până la data de: </strong>{{other.limitDate}}</p>
+    <p *ngIf="announcement.type=='internship' || announcement.type=='course'"><strong>Data de începere: </strong>{{other.startDate}}</p>
+    <p *ngIf="announcement.type=='contest'"><strong>Durata: </strong>{{other.date}}</p>
+    <p *ngIf="announcement.type=='contest'"><strong>Preț: </strong>{{other.price}}</p>
+    <p *ngIf="announcement.type=='contest'"><strong>Premii: </strong>{{other.prizes}}</p>
+    <p *ngIf="announcement.type=='contest'"><strong>Locație: </strong>{{other.location}}</p>
+    <p *ngIf="announcement.type=='internship'"><strong>Cerințe: </strong>{{other.requirments}}</p>
+    <p *ngIf="announcement.type=='job' || announcement.type=='scholarship'"><strong>Cerințe: </strong>{{other.requirements}}</p>
+    <p *ngIf="announcement.type=='other'"><strong>Detalii: </strong>{{other.details}}</p>
+    <p *ngIf="announcement.type=='internship'"><strong>Poziții libere: </strong>{{other.numberAvailablePositions}}</p>
+    <p *ngIf="announcement.type=='scholarship'"><strong>Poziții libere: </strong>{{other.noAvailablePositions}}</p>
+    <a *ngIf="!currentUser" href="{{announcement.link}}">Aplica aici!</a>
+    <p><strong>Tag-uri: </strong></p>
+    <p *ngFor="let tagIter of announcement.tags">{{tagIter.text}}</p>
+    <a *ngIf="currentUser && compid==announcement.companyId" routerLink="/edit/{{announcementId}}">Edit</a>
+    <img src="{{announcement.image.imageUrl}}">
+</div>
+<div *ngIf="!announcement">
+    <p>Announcement not found</p>
+</div>
