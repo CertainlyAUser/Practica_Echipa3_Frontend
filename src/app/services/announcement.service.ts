@@ -9,6 +9,7 @@ import { AuthenticationService } from '../_services';
 import { AnnouncementFormTemplate } from 'src/app/model/add-announcement.model'
 import { map } from 'rxjs/operators';
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -336,5 +337,18 @@ export class AnnouncementService {
           });
       });
     });
+  }
+
+  postAnnouncement(announcement : AnnouncementFormTemplate){
+    let headers = new HttpHeaders({
+      'Content-Type':'application/json',
+      'Authorization': this.auth.currentUserValue.token
+    });
+    this._httpService.post("http://localhost:8080/descriptions", {"text":announcement.description}, {headers:headers}).subscribe(res => 
+      {
+        console.log(res);
+        this._httpService.post("http://localhost:8080/",{});
+      }
+    );
   }
 }
