@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { AnnouncementService } from '../../services/announcement.service';
 import { User } from '../../_user_model';
 import { AuthenticationService } from '../../_services';
+import { AnnouncementFormTemplate } from 'src/app/model/add-announcement.model';
 
 @Component({
     selector: 'app-announcement-details',
@@ -13,18 +14,40 @@ import { AuthenticationService } from '../../_services';
 @Injectable({ providedIn: 'root' })
 export class AnnouncementDetailsComponent implements OnInit {
     currentUser: User;
-    announcement: Announcement;
+    announcement: AnnouncementFormTemplate;
+    announcementId: number;
+    compid: number;
+    other: any;
 
     constructor(private route: ActivatedRoute, private announcementService: AnnouncementService, private authService: AuthenticationService) {
         authService.currentUser.subscribe(x => this.currentUser = x);
+        this.other = {"limitDate":"","date":""}
     }
 
     ngOnInit() {
-        this.announcement = this.getAnnouncement();
-    }
-
-    getAnnouncement(): Announcement {
-        const id = +this.route.snapshot.paramMap.get('id');
-        return this.announcementService.getAnnouncementById(id);
+        this.announcementId = parseInt(this.route.snapshot.paramMap.get('id'));
+        this.announcementService.getCompanyId().subscribe(resId => {this.compid = resId});
+        this.announcementService.getAnnouncementById(this.announcementId).subscribe(res => {this.announcement = res;
+            switch(this.announcement.type){
+                case "internship":
+                    this.announcementService.getInternshipById(res.id).subscribe( res2 => this.other = res2);
+                  break
+                case "job":
+                    this.announcementService.getJobById(res.id).subscribe( res2 => this.other = res2);
+                  break
+                case "course":
+                    this.announcementService.getCourseById(res.id).subscribe( res2 => this.other = res2);
+                  break
+                case "contest":
+                    this.announcementService.getContestById(res.id).subscribe( res2 => this.other = res2);
+                  break
+                case "scholarship":
+                    this.announcementService.getScholarshipById(res.id).subscribe( res2 => this.other = res2);
+                  break
+                case "other":
+                    this.announcementService.getOtherById(res.id).subscribe( res2 => this.other = res2);
+                  break
+              }
+        });
     }
 }

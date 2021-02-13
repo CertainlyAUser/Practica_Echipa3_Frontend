@@ -13,24 +13,28 @@
                     <mat-label>Link:</mat-label>
                     <input matInput type="text" formControlName="link">
                 </mat-form-field>
-                <mat-label>Type:</mat-label>
-                <mat-radio-group class="radioButtons" formControlName="type">
-                    <mat-radio-button class="radioButton" type="radio" name="type" value="Internship">Internship</mat-radio-button>
-                    <mat-radio-button class="radioButton" type="radio" name="type" value="Job">Job</mat-radio-button>
-                    <mat-radio-button class="radioButton" type="radio" name="type" value="Course">Course</mat-radio-button>
-                    <mat-radio-button class="radioButton" type="radio" name="type" value="Contest">Contest</mat-radio-button>
-                    <mat-radio-button class="radioButton" type="radio" name="type" value="ScholarShip">Scholarship</mat-radio-button>
+                <mat-label [hidden]="true">Type:</mat-label>
+                <mat-radio-group class="radioButtons" formControlName="type" [hidden]="true">
+                    <mat-radio-button class="radioButton" type="radio" name="type" value="internship">Internship</mat-radio-button>
+                    <mat-radio-button class="radioButton" type="radio" name="type" value="job">Job</mat-radio-button>
+                    <mat-radio-button class="radioButton" type="radio" name="type" value="course">Course</mat-radio-button>
+                    <mat-radio-button class="radioButton" type="radio" name="type" value="contest">Contest</mat-radio-button>
+                    <mat-radio-button class="radioButton" type="radio" name="type" value="scholarship">Scholarship</mat-radio-button>
+                    <mat-radio-button class="radioButton" type="radio" name="type" value="other">Other</mat-radio-button>
                     <div *ngIf="generalInfo.controls.type.value == 'Ad'">Content to render when condition is true.</div>
                     <mat-error *ngIf="generalInfo.controls.type.invalid && !generalInfo.pristine">Type is required</mat-error>
                 </mat-radio-group>
-                <mat-form-field *ngIf="generalInfo.controls.type.value == 'ScholarShip' || generalInfo.controls.type.value == 'Internship'">
+                <mat-form-field *ngIf="generalInfo.controls.type.value == 'scholarship' || generalInfo.controls.type.value == 'internship'">
                     <mat-label>Vacant Positions:</mat-label>
                     <input matInput type="text" formControlName="vacantPositions">
                 </mat-form-field>
-                <mat-form-field *ngIf="generalInfo.controls.type.value == 'Contest'">
+                <mat-form-field *ngIf="generalInfo.controls.type.value == 'contest'">
                     <mat-label>Price:</mat-label>
                     <input matInput type="text" formControlName="price">
                 </mat-form-field>
+                <form [formGroup]="imageInfo" [hidden]="false">
+                    <input type="file" formControlName="image" (change)="onImageChange($event)">
+                </form>
             </form>
         </mat-step>
         <mat-step [stepControl]="descripInfo">
@@ -48,10 +52,10 @@
                 </mat-form-field>
             </form>
         </mat-step>
-        <mat-step [stepControl]="timeInfo">
+        <mat-step [stepControl]="timeInfo" *ngIf="generalInfo.controls.type.value != 'other'">
             <ng-template matStepLabel>Time and Space</ng-template>
             <form [formGroup]="timeInfo">
-                <mat-form-field *ngIf="generalInfo.controls.type.value == 'Course' || generalInfo.controls.type.value == 'Internship'">
+                <mat-form-field *ngIf="generalInfo.controls.type.value == 'course' || generalInfo.controls.type.value == 'internship'">
                     <mat-label>Start Date:</mat-label>
                     <input matInput formControlName="startDate" [matDatepicker]="picker">
                     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
@@ -63,13 +67,13 @@
                     <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
                     <mat-datepicker #picker2></mat-datepicker>
                 </mat-form-field>
-                <mat-form-field *ngIf="generalInfo.controls.type.value == 'Contest'">
+                <mat-form-field *ngIf="generalInfo.controls.type.value == 'contest'">
                     <mat-label>Date:</mat-label>
                     <input matInput formControlName="date" [matDatepicker]="picker3">
                     <mat-datepicker-toggle matSuffix [for]="picker3"></mat-datepicker-toggle>
                     <mat-datepicker #picker3></mat-datepicker>
                 </mat-form-field>
-                <mat-form-field *ngIf="generalInfo.controls.type.value == 'Contest'">
+                <mat-form-field *ngIf="generalInfo.controls.type.value == 'contest'">
                     <mat-label>Location:</mat-label>
                     <input matInput formControlName="location">
                 </mat-form-field>
@@ -78,13 +82,17 @@
         <mat-step [stepControl]="miscInfo">
             <ng-template matStepLabel>Other</ng-template>
             <form [formGroup]="miscInfo">
-                <mat-form-field *ngIf="generalInfo.controls.type.value == 'Job' || generalInfo.controls.type.value == 'Internship' || generalInfo.controls.type.value == 'ScholarShip'">
+                <mat-form-field *ngIf="generalInfo.controls.type.value == 'job' || generalInfo.controls.type.value == 'internship' || generalInfo.controls.type.value == 'scholarship'">
                     <mat-label>Requirements:</mat-label>
                     <textarea matInput type="text" formControlName="requirements"></textarea>
                 </mat-form-field>
-                <mat-form-field *ngIf="generalInfo.controls.type.value == 'Contest'">
+                <mat-form-field *ngIf="generalInfo.controls.type.value == 'contest'">
                     <mat-label>Prize:</mat-label>
                     <textarea matInput type="text" formControlName="prize"></textarea>
+                </mat-form-field>
+                <mat-form-field *ngIf="generalInfo.controls.type.value == 'other'">
+                    <mat-label>Details:</mat-label>
+                    <textarea matInput type="text" formControlName="details"></textarea>
                 </mat-form-field>
                 <!-- <mat-form-field> -->
                     <!-- <mat-label>Tags:</mat-label> -->
@@ -93,7 +101,7 @@
                 <!-- </mat-form-field> -->
             </form>
             <app-tag-list></app-tag-list>
-            <button mat-button (click)="createAnnouncement()">Submit</button>
+            <button mat-button (click)="createAnnouncement()" [disabled]="generalInfo.invalid || descripInfo.invalid || miscInfo.invalid || timeInfo.invalid || imageInfo.invalid">Submit</button>
         </mat-step>
     </mat-horizontal-stepper>
     </mat-card>

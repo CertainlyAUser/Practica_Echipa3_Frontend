@@ -2,8 +2,11 @@ import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
 import { registerLocaleData } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl} from '@angular/forms'
+import { Router } from '@angular/router';
+
 import { AnnouncementService } from 'src/app/services/announcement.service';
 import { TagService } from 'src/app/services/tag.service';
+import { AnnouncementFormTemplate } from '../../../model/add-announcement.model';
 import { TagListComponent } from '../../../shared/tag-list/tag-list.component';
 import { TagComponent } from '../../../shared/tag/tag.component';
 
@@ -18,6 +21,7 @@ import { TagComponent } from '../../../shared/tag/tag.component';
 export class AnnouncementFormComponent implements OnInit {
 
   //public announcForm : FormGroup;
+  private currentImage : File;
   private announcement: AnnouncementFormTemplate;
   private showModal : boolean;
   public generalInfo : FormGroup;
@@ -25,8 +29,9 @@ export class AnnouncementFormComponent implements OnInit {
   public timeInfo : FormGroup;
   public miscInfo : FormGroup;
   public tagInfo : FormGroup;
+  public imageInfo : FormGroup;
 
-  constructor(private fb : FormBuilder, private ts : TagService, private ann : AnnouncementService) { }
+  constructor(private fb : FormBuilder, private ts : TagService, private ann : AnnouncementService, private router:Router) { }
 
   ngOnInit() {
     /*this.announcForm = this.fb.group({
@@ -40,7 +45,8 @@ export class AnnouncementFormComponent implements OnInit {
       'vacantPositions':[''],
       'tags':[''],
     });*/
-    this.announcement = {title:'', type:'',link:'',vacantPositions:5,prize:'',price:5,shortDesc:'',description:'',startDate:'',limitDate:'',date:'',location:'',requirements:'',tags:[]};
+    this.ts.clear();
+    this.announcement = {title:'', type:'',link:'',vacantPositions:5,prize:'',price:5,shortDesc:'',description:'',startDate:'',limitDate:'',date:'',location:'',requirements:'',details:'',tags:[], image:''};
     this.showModal = false;
     this.generalInfo = this.fb.group({
       //title:[null, Validators.required],
@@ -64,10 +70,14 @@ export class AnnouncementFormComponent implements OnInit {
     });
     this.miscInfo = this.fb.group({
       requirements:[''],
+      details:[''],
       prize:['']
     });
     this.tagInfo = this.fb.group({
       tags:['']
+    });
+    this.imageInfo = this.fb.group({
+      image:['']
     });
 
     this.generalInfo.controls.type.valueChanges.subscribe(value => {
@@ -92,6 +102,7 @@ export class AnnouncementFormComponent implements OnInit {
 
   createAnnouncement(){
     if( this.generalInfo.valid && this.descripInfo.valid && this.timeInfo.valid && this.miscInfo.valid){
+      //this.ann.saveImager(this.curentImage);
       this.announcement.title = this.generalInfo.controls.title.value;
       this.announcement.link = this.generalInfo.controls.link.value;
       this.announcement.type = this.generalInfo.controls.type.value;
@@ -105,10 +116,18 @@ export class AnnouncementFormComponent implements OnInit {
       this.announcement.location = this.timeInfo.controls.location.value;
       this.announcement.prize = this.miscInfo.controls.prize.value;
       this.announcement.requirements = this.miscInfo.controls.requirements.value;
+      this.announcement.details = this.miscInfo.controls.details.value;
       this.announcement.tags = this.ts.getTags();
+     
+      this.ann.postTags(this.ts.getTags());
       this.ts.clear();
-      this.ann.postAnnouncement(this.announcement);
+      this.ann.postAnnouncement(this.announcement, this.currentImage);
+      this.router.navigate(["/"])
     }
     console.log(this.announcement);
+  }
+  
+  onImageChange(event){
+      this.currentImage = event.target.files.item(0);
   }
 }

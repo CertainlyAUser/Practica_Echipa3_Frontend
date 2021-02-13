@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { AnnouncementFormTemplate } from '../model/add-announcement.model';
 
 @Injectable({
   providedIn: 'root'

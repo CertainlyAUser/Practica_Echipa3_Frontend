@@ -1,12 +1,12 @@
 <div class="card">
   <div class="card__filter">
-    <p>Importanță:</p>
+    <!-- <p>Importanță:</p>
     <select name="importance" [(ngModel)]="importance">
       <option value=""></option>
       <option value="1">1</option>
       <option value="2">2</option>
       <option value="3">3</option>
-    </select>
+    </select> -->
 
     <p>Tip:</p>
     <select name="type" [(ngModel)]="type">
@@ -14,8 +14,9 @@
       <option value="Internship">Internship</option>
       <option value="Scholarship">Burse</option>
       <option value="Course">Cursuri</option>
-      <option value="Event">Evenimente</option>
+      <option value="Job">Job</option>
       <option value="Contest">Concursuri</option>
+      <option value="Other">Altele</option>
     </select>
 
     <button (click)="filter()">Caută</button>

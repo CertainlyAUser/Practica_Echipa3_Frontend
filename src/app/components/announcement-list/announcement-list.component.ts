@@ -18,11 +18,11 @@ export class AnnouncementListComponent implements OnInit {
 
   ngOnInit() {
     this.getAnnouncements();
-    this.announcementsBackup = this.announcements;
+    //this.announcementsBackup = this.announcements;
   }
 
   getAnnouncements(): void {
-    this.announcementService.getAnnouncements().subscribe(announcements => this.announcements = announcements);
+    this.announcementService.getAnnouncementsApproved().subscribe(announcements => {this.announcements = announcements, this.announcementsBackup = announcements; console.log(announcements)});
   }
 
   filter(): void {
@@ -37,7 +37,7 @@ export class AnnouncementListComponent implements OnInit {
     }
     if (this.type)
     {
-      filteredByType = this.announcements.filter(an => an.type == this.type)
+      filteredByType = this.announcements.filter(an => an.type.toUpperCase() == this.type.toUpperCase())
       this.announcements = filteredByType
     }
   }

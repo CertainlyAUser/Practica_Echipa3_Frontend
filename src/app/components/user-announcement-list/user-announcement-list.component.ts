@@ -20,16 +20,16 @@ export class UserAnnouncementListComponent implements OnInit {
 
   ngOnInit() {
     this.getAnnouncements();
-    this.announcementsBackup = this.announcements;
+    /*this.announcementsBackup = this.announcements;
     this.user = this.authService.currentUserValue;
 
     if (this.user) {
       this.filterForUser();
-    }
+    }*/
   }
   
   getAnnouncements(): void {
-    this.announcementService.getAnnouncements().subscribe(announcements => this.announcements = announcements);
+    this.announcementService.getCompanyId().subscribe(id => this.announcementService.getAnnouncementsByUser(id).subscribe(announcements => this.announcements = announcements));
   }
 
   filterForUser(): void {

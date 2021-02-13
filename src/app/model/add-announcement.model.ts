@@ -1,4 +1,7 @@
-interface AnnouncementFormTemplate{
+import { format } from "url"
+import { Tag } from "../model/tag.model"
+
+export interface AnnouncementFormTemplate{
     title: string
     link: string
     type: string
@@ -12,5 +15,7 @@ interface AnnouncementFormTemplate{
     location: string
     prize: string
     requirements: string
+    details: string
     tags: Tag[]
+    image: string
 }

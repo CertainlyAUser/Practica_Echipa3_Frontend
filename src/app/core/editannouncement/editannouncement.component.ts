@@ -1,9 +1,11 @@
 import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl} from '@angular/forms'
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { AnnouncementService } from 'src/app/services/announcement.service';
 import { EditformService } from 'src/app/services/editform.service';
 import { TagService } from 'src/app/services/tag.service';
+import { AnnouncementFormTemplate } from '../../model/add-announcement.model';
 
 @Component({
   selector: 'app-editannouncement',
@@ -16,32 +18,72 @@ import { TagService } from 'src/app/services/tag.service';
 export class EditannouncementComponent implements OnInit {
 
   private announcement: AnnouncementFormTemplate;
+  private announcementBackup: any;
+  private curentImage : File;
   private showModal : boolean;
   public generalInfo : FormGroup;
   public descripInfo : FormGroup;
   public timeInfo : FormGroup;
   public miscInfo : FormGroup;
   public tagInfo : FormGroup;
+  public imageInfo : FormGroup;
 
-  constructor(private fb : FormBuilder, private ts : TagService, private route:ActivatedRoute, private es:EditformService) { 
-    //this.announcement = {title:'', type:'',link:'',vacantPositions:5,prize:'',price:5,shortDesc:'',description:'',startDate:'',limitDate:'',date:'',location:'',requierments:'',tags:[]};
+  constructor(private fb : FormBuilder, private ts : TagService, private route:ActivatedRoute, private es:AnnouncementService, private router: Router) { 
+    ts.clear();
     const aId = route.snapshot.paramMap.get('id');
     console.log(aId);
-    es.getAnnouncement(aId).subscribe( x => {
+    es.getAnnouncementById(parseInt(aId)).subscribe( x => {
       this.announcement = x;
+      this.announcementBackup = x;
       console.log(x);
       this.generalInfo.controls.title.setValue(x.title);
       this.generalInfo.controls.type.setValue(x.type);
       this.generalInfo.controls.link.setValue(x.link);
-      this.generalInfo.controls.vacantPositions.setValue(x.vacantPositions);
-      this.generalInfo.controls.price.setValue(x.price);
-      this.descripInfo.controls.description.setValue(x.description);
-      this.descripInfo.controls.shortDesc.setValue(x.shortDesc);
-      this.timeInfo.controls.startDate.setValue(x.startDate);
-      this.timeInfo.controls.limitDate.setValue(x.limitDate);
-      this.timeInfo.controls.date.setValue(x.date);
-      this.timeInfo.controls.location.setValue(x.location);
-      this.miscInfo.controls.requirements.setValue(x.requirements)
+      this.descripInfo.controls.description.setValue(x.description.text);
+      this.descripInfo.controls.shortDesc.setValue(x.shortDescription);
+      switch(x.type){
+        case 'internship':
+          es.getInternshipById(parseInt(aId)).subscribe(res => {
+            this.timeInfo.controls.startDate.setValue(res.startDate);
+            this.timeInfo.controls.limitDate.setValue(res.limitDate);
+            this.miscInfo.controls.requirements.setValue(res.requirments);
+            this.generalInfo.controls.vacantPositions.setValue(res.numberAvailablePositions);
+          });
+          break
+        case 'job':
+          es.getJobById(parseInt(aId)).subscribe(res => {
+            this.timeInfo.controls.limitDate.setValue(res.limitDate);
+            this.miscInfo.controls.requirements.setValue(res.requirements);
+          });
+          break
+        case 'course':
+          es.getCourseById(parseInt(aId)).subscribe(res => {
+            this.timeInfo.controls.startDate.setValue(res.startDate);
+            this.timeInfo.controls.limitDate.setValue(res.limitDate);
+          });
+          break
+        case 'contest':
+          es.getContestById(parseInt(aId)).subscribe(res => {    
+            this.generalInfo.controls.price.setValue(res.price);
+            this.timeInfo.controls.date.setValue(res.date);
+            this.timeInfo.controls.location.setValue(res.location);
+            this.timeInfo.controls.limitDate.setValue(res.limitDate);
+            this.miscInfo.controls.prize.setValue(res.prizes);
+          });
+          break
+        case 'scholarship':
+          es.getScholarshipById(parseInt(aId)).subscribe(res => {
+            this.timeInfo.controls.limitDate.setValue(res.limitDate);
+            this.miscInfo.controls.requirements.setValue(res.requirements);
+            this.generalInfo.controls.vacantPositions.setValue(res.noAvailablePositions);
+          });
+          break
+        case 'other':
+          es.getOtherById(parseInt(aId)).subscribe(res => {
+            this.miscInfo.controls.details.setValue(res.details);
+          });
+          break
+      }
       x.tags.forEach(y => ts.addTag(y.text.toString()));
     })
     this.showModal = false;
@@ -67,10 +109,14 @@ export class EditannouncementComponent implements OnInit {
     });
     this.miscInfo = this.fb.group({
       requirements:[''],
+      details:[''],
       prize:['']
     });
     this.tagInfo = this.fb.group({
       tags:['']
+    });
+    this.imageInfo = this.fb.group({
+      image:['']
     });
 
     this.generalInfo.controls.type.valueChanges.subscribe(value => {
@@ -111,9 +157,17 @@ export class EditannouncementComponent implements OnInit {
       this.announcement.location = this.timeInfo.controls.location.value;
       this.announcement.prize = this.miscInfo.controls.prize.value;
       this.announcement.requirements = this.miscInfo.controls.requirements.value;
+      this.announcement.details = this.miscInfo.controls.details.value;
       this.announcement.tags = this.ts.getTags();
+      this.es.updateAnnouncement(this.announcement, this.announcementBackup, this.curentImage)
       this.ts.clear();
+      this.router.navigate(["/"])
     }
     console.log(this.announcement);
+    this.generalInfo.controls.title.valueChanges.subscribe(res => console.log("BBB"));
   }
+
+  onImageChange(event){
+    this.curentImage = event.target.files.item(0);
+}
 }
